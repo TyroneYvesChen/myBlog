@@ -3,8 +3,19 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store/store'
+import httpServer from './assets/js/api/api'
+import * as filters from './assets/js/filters';
 
-Vue.config.productionTip = false
+
+Vue.prototype.$http = httpServer
+
+Vue.config.productionTip = true
+
+Object.keys(filters).forEach((key) => {
+  Vue.filter(key, filters[key]);
+});
+
 
 /* eslint-disable no-new */
 new Vue({

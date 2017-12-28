@@ -1,0 +1,88 @@
+/* ==================================================
+ * 			 		 全局Sass样式
+ * ================================================= */
+
+@mixin ell() {
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin lineNum($num) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $num;
+  overflow: hidden;
+}
+
+
+
+@mixin minHeight($min-height) {
+  min-height: $min-height;
+  height: auto !important;
+  height: $min-height;
+}
+
+/* 箭头
+arrow(direction,
+size,
+color);
+*/
+@mixin arrow($direction,
+$size,
+$color) {
+  width: 0;
+  height: 0;
+  line-height: 0;
+  font-size: 0;
+  overflow: hidden;
+  border-width: $size;
+  cursor: pointer;
+  @if $direction == top {
+    border-style: dashed dashed solid dashed;
+    border-color: transparent transparent $color transparent;
+    border-top: none;
+  }
+  @else if $direction == bottom {
+    border-style: solid dashed dashed dashed;
+    border-color: $color transparent transparent transparent;
+    border-bottom: none;
+  }
+  @else if $direction == right {
+    border-style: dashed dashed dashed solid;
+    border-color: transparent transparent transparent $color;
+    border-right: none;
+  }
+  @else if $direction == left {
+    border-style: dashed solid dashed dashed;
+    border-color: transparent $color transparent transparent;
+    border-left: none;
+  }
+}
+
+
+
+
+@mixin colStyle() {
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  float: left;
+  box-sizing: border-box;
+}
+
+@mixin col($number) {
+  @for $index from 1 through $number
+  {
+    .col-#{$index}
+    {
+      width: percentage(1 / $number * $index);
+      @include colStyle();
+    }
+  }
+}
+
+@include col(12);
+
