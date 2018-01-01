@@ -1,4 +1,4 @@
 export default {
-  maskShow: true,
-  wocao: "mmp"
+  // maskShow: true,
+  // wocao: "mmp"
 }

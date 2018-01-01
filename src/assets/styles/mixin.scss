@@ -86,3 +86,40 @@ $color) {
 
 @include col(12);
 
+
+// 背景图片自适应
+@mixin bgAuto($bgUrl) {
+  background:url($bgUrl) no-repeat;  
+      width:100%;  
+      height:100%;  
+      background-size:100% 100%;  
+      position:absolute;  
+      filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src=$bgUrl,sizingMethod='scale'); 
+}
+
+// div定位位置，默认垂直居中
+@mixin center($left: -50%, $top: -50%) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform : translate($left,$top);
+
+  // @if not $width and not $height {
+  //     transform: translate(-50%, -50%);
+  // } @else if $width and $height {
+  //     width: $width;
+  //     height: $height;
+  //     margin: -($width / 2) #{0 0} -($height / 2);
+  // } @else if not $height {
+  //     width: $width;
+  //     margin-left: -($width / 2);
+  //     transform: translateY(-50%);
+  // } @else {
+  //     height: $height;
+  //     margin-top: -($height / 2);
+  //     transform: translateX(-50%);
+  // }
+}
+
+
+

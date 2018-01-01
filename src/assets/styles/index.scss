@@ -1,0 +1,51 @@
+.clearfix {
+  *zoom: 1;
+}
+
+.clearfix:before,
+
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+body{
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 垂直水平居中 */
+.vetically{
+  position  : absolute;
+  top       : 50%;
+  left      : 50%;
+  transform : translate(-50%,-50%);
+}
+
+/* flex单行垂直居中 */
+.flexVetically{
+  display         : flex;
+  justify-content : center;
+  align-items     : center;
+}
+
+/* flex多行垂直居中 */
+.flexVetically_MultiLine{
+  display         : flex;
+  justify-content : center;
+  flex-wrap       : wrap/wrap-reverse;
+  align-items     : center;
+}
+
+body{
+  min-width: 1200px;
+}
+
+*{
+  transition: all 0.3;
+}

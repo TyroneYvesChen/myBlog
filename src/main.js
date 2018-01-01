@@ -21,6 +21,7 @@ Object.keys(filters).forEach((key) => {
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })
