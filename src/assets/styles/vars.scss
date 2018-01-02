@@ -7,10 +7,12 @@ $white-base:									#ffffff !default;
 $gray-light:									#D7D7D7 !default;
 $gray-minor:									#9B9B9B !default;
 $gray-default:								    #D1D0CD !default;
-$gray-default2:                   #bbbbbb;
+$gray-default2:                                 #bbbbbb;
 $gray-line-default:								#D4D4D4 !default;
+$gray-base:	                                    #cccccc;
+$gray-nav:                                      #a5a5a5;
 
-$black-base:									#4A4A4A !default;
+$black-base:									#333333 !default;
 
 $yellow-base:									#FFCD00 !default;
 $yellow-active:									#FFB72C !default;
@@ -57,10 +59,13 @@ $primary-active:								$yellow-active;
 $register-active:								$purple-active;
 
 // Width, Height, Padding, Margin
-$padding:                       20px 0px;
+$padding:                       10px;
 $nav_trigger:                   40px;
 $nav_trigger_scale:             10px;
 
+$little-font-size:              14px;
 $medium-font-size:              24px;
 $large-font-size:               36px;
+$nav-hover:                     16px;
 
+$nav-side-width:                300px;

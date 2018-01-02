@@ -1,5 +1,5 @@
 <template>
-  <div class="nav_trigger" @click="trigger">
+  <div class="nav_trigger" @click="showSide">
       <!-- <img :src="imgSrc.navTrigger" alt="点我点我点我！"> -->
   </div>
 </template>
@@ -9,15 +9,14 @@ export default {
   name: 'navTrigger',
   data () {
     return {
-      isTrigger: false,
       imgSrc: {
         navTrigger: require('./img/nav.png')
       }
     }
   },
   methods: {
-    trigger: () => {
-      this.isTrigger = true
+    showSide: function(){    
+      this.$store.dispatch('isCoverShow')
     }
   }
 }

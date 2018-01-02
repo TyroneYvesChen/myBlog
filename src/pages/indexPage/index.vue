@@ -1,7 +1,7 @@
 <template>
   <div class="index_wrap">
     <!-- 主页右侧导航栏折叠按钮 -->
-    <nav-trigger @click.native="openMes"></nav-trigger>
+    <nav-trigger></nav-trigger>
 
     <div class="content">
       <div class="index_small_title"> &lt;/html&gt; </div>
@@ -52,26 +52,26 @@ export default {
         .index_small_title{
           font-family:PingFangSC-Regular;
           font-size:$medium-font-size * 1.2;
-          color:#333333;
+          color:$black-base-font;
           letter-spacing:0.8px;
         }
 
         .index_big_title{
           font-family:Bauhaus93;
           font-size:$large-font-size * 1.2;
-          color:#333333;
+          color:$black-base-font;
           font-weight: bold;
           padding: 15px 0 20px 0;
         }
 
         .enter_btn{
-          border:1px solid #333333;
+          border:1px solid $black-base;
           border-radius:18px;
           width:100px;
           height:36px;
           line-height: 36px;
           text-align: center;
-          box-shadow: #333333 0px 2px 5px -1px;
+          box-shadow: $black-base 0px 2px 5px -1px;
           cursor: pointer;
         }
       }
