@@ -6,7 +6,7 @@
     <div class="content">
       <div class="index_small_title"> &lt;/html&gt; </div>
       <div class="index_big_title">hello,TyroneYvesChen</div>
-      <div class="enter_btn">ENTER</div>
+      <div class="enter_btn" @click="openNot">ENTER</div>
     </div>
   </div>
 </template>
@@ -29,21 +29,23 @@ export default {
     }
   },
   methods: {
-    openMes: () => {
+    openNot: () => {
       console.log(111)
       let options = {
-        title: '标题名称',
-        message: 'ceshi'
+        title: '该功能暂未开放！',
+        message: '敬请期待！',
+        position: 'top-left'
       }
       Notification(options)
-    }
+    },
   }
 }
 </script>
 
 <style lang='scss' scoped rel="stylesheet/scss" type="text/css">
     .index_wrap{
-      @include bgAuto('./img/index_bg.png');
+      // @include bgAuto('./img/index_bg.png');
+      @include bgAuto('./img/index_bg_little.png');
      
       .content{
         @include center(-135%);

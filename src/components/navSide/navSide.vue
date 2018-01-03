@@ -11,19 +11,45 @@
 
         <!-- nav主体导航栏 -->
       <ul class="nav_body">
-        <li class="nav_item">HOME</li>
-        <li class="nav_item">NEWS</li>
-        <li class="nav_item">DEMO</li>
-        <li class="nav_item">LIFE</li>
-        <li class="nav_item">SHOW</li>
-        <li class="nav_item">CAT</li>
+        <router-link class="nav_item" to="/" tag="li" @click.native="close">HOME</router-link>
+        <li class="nav_item" @click="openMes">NEWS</li>
+        <li class="nav_item" @click="openMes">DEMO</li>
+        <li class="nav_item" @click="openMes">LIFE</li>
+        <li class="nav_item" @click="openMes">SHOW</li>
+        <li class="nav_item" @click="openMes">CAT</li>
       </ul>
+
+      <ul class="skill_introduce">
+        <!-- 头像 -->
+        <div class="headerImg">
+          <img :src="imgSrc.navHeaderImg" alt="">
+        </div>
+
+        <!-- 技能槽 -->
+        <li class="skill_item clearfix" 
+          v-for="(item, index) in skillArr" 
+          :key="index">
+          <div class="s_name">{{ item.name }}</div>
+          <div class="s_progress">
+            <el-progress 
+            :percentage="item.percentage"
+            :stroke-width="10"
+            :show-text="false" ></el-progress>
+          </div>
+        </li>
+      </ul>
+
     </div>
   </transition>
 </template>
 
 <script>
 import {mapGetters} from 'vuex'
+import { Message } from 'element-ui';
+import { Progress  } from 'element-ui';
+// import 'element-ui/lib/theme-chalk/index.css'
+import Vue from 'vue'
+Vue.use(Progress)
 
 export default {
   name: 'navSide',
@@ -36,14 +62,45 @@ export default {
   data () {
     return {
       imgSrc: {
-        navClose: require('./img/navClose.png')
-      }
+        navClose: require('./img/navClose.png'),
+        navHeaderImg: require('./img/cute.jpg')
+      },
+      skillArr: [
+        {
+          name: "HTML 5",
+          percentage: 80
+        },
+        {
+          name: "CSS 3",
+          percentage: 85
+        },
+        {
+          name: "JQUERY",
+          percentage: 100
+        },
+        {
+          name: "VUE",
+          percentage: 80
+        },
+        {
+          name: "NODE",
+          percentage: 60
+        }
+      ]
     }
   },
   methods: {
     //nav关闭移出事件
     close: function(){
       this.$store.dispatch('isCoverShow')
+    },
+    openMes: () => {
+      console.log(111)
+      let options = {
+        message: '尚未完成，敬请期待！',
+        type: 'success'
+      }
+      Message(options)
     }
   },
   mounted (){
@@ -60,7 +117,6 @@ export default {
         background:#232222;
         position: absolute;
         right: 0;
-        // transform: translate3d(100%, 0, 0);
         z-index: 10;
 
         .close_btn{
@@ -70,7 +126,7 @@ export default {
         }
 
         .nav_body{
-          padding: 60px 35px;
+          padding: 25% 12% 15%;
 
           .nav_item{
             position: relative;
@@ -97,6 +153,42 @@ export default {
                 top: 18px;
                 left: -2px;
               }
+            }
+          }
+        }
+
+        .skill_introduce{
+
+          .headerImg{
+            text-align: center;
+            padding: 2% 0 5%;
+
+            img{
+              width: 40%;
+              margin: 0 auto;
+              border-radius: 100%;
+            }
+          }
+
+          .skill_item{
+            text-align: left;
+            color:$gray-nav;
+            font-size:$little-font-size;
+            padding: 2% 0;
+            
+            > div{
+              // display: inline-block;
+              float: left;
+            }
+
+            .s_name{
+              width: 40%;
+              padding-left: 15%;
+            }
+
+            .s_progress{
+              width: 60%;
+              padding-right: 10%;
             }
           }
         }
