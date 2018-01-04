@@ -12,7 +12,7 @@
         <!-- nav主体导航栏 -->
       <ul class="nav_body">
         <router-link class="nav_item" to="/" tag="li" @click.native="close">HOME</router-link>
-        <li class="nav_item" @click="openMes">NEWS</li>
+        <router-link class="nav_item" to="/news" tag="li" @click.native="close">NEWS</router-link>
         <li class="nav_item" @click="openMes">DEMO</li>
         <li class="nav_item" @click="openMes">LIFE</li>
         <li class="nav_item" @click="openMes">SHOW</li>
@@ -116,6 +116,7 @@ export default {
         height: 100%;
         background:#232222;
         position: absolute;
+        top: 0;
         right: 0;
         z-index: 10;
 
@@ -134,7 +135,9 @@ export default {
             font-size:$little-font-size;
             color:$gray-nav;
             letter-spacing:2.62px;
-            padding: $padding;
+            padding: 0 $padding;
+            height: 36px;
+            line-height: 36px;
             text-align: left;
             cursor: pointer;
             
@@ -158,6 +161,8 @@ export default {
         }
 
         .skill_introduce{
+          position: absolute;
+          bottom: 30px;
 
           .headerImg{
             text-align: center;

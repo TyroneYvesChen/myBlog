@@ -5,6 +5,7 @@ const state={
   isCoverShow: false
 }
 
+// actions可执行异步操作
 const actions={
   httpCounts({commit},data){
     commit(types.HTTP_COUNTS, data);
@@ -23,6 +24,7 @@ const mutations={
   //全局覆盖层是否显示 boolean
   [types.IS_COVER_SHOW](state){
     state.isCoverShow = !state.isCoverShow
+    document.body.style.overflowY = state.isCoverShow ? "hidden" : "auto"
   }
 }
 

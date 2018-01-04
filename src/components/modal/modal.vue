@@ -2,7 +2,7 @@
   <transition 
     enter-active-class="animated fadeIn"
     leave-active-class="animated fadeOut">
-    <div class="modal" v-if="isCoverShow"></div>    
+    <div class="modal" v-show="isCoverShow" @click="close"></div>    
   </transition>
 </template>
 
@@ -19,6 +19,9 @@ export default {
     ...mapGetters(["isCoverShow"])
   },
   methods: {
+    close: function(){    
+      this.$store.dispatch('isCoverShow')
+    }
   },
   mounted (){
   }

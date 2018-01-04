@@ -30,6 +30,8 @@ export default {
         margin-top: $nav_trigger_scale;
         background: url('./img/nav.png') no-repeat center;
         background-size: 100%;
+        box-shadow: 0px 1px 10px 1px #ffffff;
+        border-radius: 5px;
         transition: all 0.3s;
         cursor: pointer;
         float: right;
@@ -37,6 +39,7 @@ export default {
         &:hover{
           background: url('./img/navHover.png') no-repeat center;
           background-size: 100%;
+          background-color: #ffffff;
         }
         img{
           width: 100%;

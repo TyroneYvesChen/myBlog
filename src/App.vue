@@ -1,9 +1,14 @@
 <template>
   <div id="app">
-    <router-view/>
-
+    <transition 
+      enter-active-class="animated fadeIn">
+      <router-view/>
+    </transition>
+    
+    <!-- 全局侧边导航栏 -->
     <nav-side></nav-side>
 
+    <!-- 全局覆盖层 -->
     <modal></modal>
   </div>
 </template>
@@ -11,6 +16,9 @@
 <script>
 import modal from '@/components/modal/modal'
 import navSide from '@/components/navSide/navSide'
+
+// vue生态
+// import {mapGetters} from 'vuex'
 
 export default {
   name: 'app',
