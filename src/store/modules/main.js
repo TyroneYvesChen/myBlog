@@ -24,7 +24,7 @@ const mutations={
   //全局覆盖层是否显示 boolean
   [types.IS_COVER_SHOW](state){
     state.isCoverShow = !state.isCoverShow
-    document.body.style.overflowY = state.isCoverShow ? "hidden" : "auto"
+    // document.body.style.overflowY = state.isCoverShow ? "hidden" : "auto"
   }
 }
 

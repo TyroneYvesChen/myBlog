@@ -24,6 +24,8 @@ export default {
 
 <style lang='scss' scoped rel="stylesheet/scss" type="text/css">
       .nav_trigger{
+        position: absolute;
+        right: 0;
         width: $nav_trigger;
         height: $nav_trigger;
         margin-right: $nav_trigger_scale * 2;
@@ -34,7 +36,6 @@ export default {
         border-radius: 5px;
         transition: all 0.3s;
         cursor: pointer;
-        float: right;
 
         &:hover{
           background: url('./img/navHover.png') no-repeat center;

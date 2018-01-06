@@ -163,13 +163,15 @@ export default {
         .skill_introduce{
           position: absolute;
           bottom: 30px;
+          width: 100%;
 
           .headerImg{
             text-align: center;
             padding: 2% 0 5%;
 
             img{
-              width: 40%;
+              width: $head-img-size;
+              height: $head-img-size;
               margin: 0 auto;
               border-radius: 100%;
             }
