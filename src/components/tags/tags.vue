@@ -19,7 +19,6 @@ export default {
   },
   methods: {
     openMes: () => {
-      console.log(111)
       let options = {
         message: '我是可爱的小tag~我有什么功能还不知道呢~',
         type: 'success'
