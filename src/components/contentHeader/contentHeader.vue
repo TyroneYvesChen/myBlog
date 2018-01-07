@@ -30,7 +30,7 @@ export default {
 
         .big_title{
           display: inline-block;
-          font-family:$content-header;
+          font-family:$content-font;
           font-size:$medium-font-size;
           padding: 0 $padding-medium;
           color:#000000;

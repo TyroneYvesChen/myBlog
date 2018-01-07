@@ -122,4 +122,12 @@ $color) {
 }
 
 
+//多行文本省略号
+@mixin multiLine($lineNum: 3) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $lineNum;
+  -webkit-box-orient: vertical;
+}
 

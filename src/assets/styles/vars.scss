@@ -49,6 +49,7 @@ $arrow-font:									$gray-line-default;
 $place-holder-font:								#C9CDD2;
 //header-common 组件title字色
 $header-common-tittle:                          $gray-base;
+$content-font-color:                            rgba(0,0,0,0.54);
 
 // Line  Color
 $base-line-color:								$gray-light;
@@ -64,6 +65,7 @@ $min-width:                     960px;
 
 $padding:                       10px;
 $padding-medium:                $padding * 1.5;
+$padding-large:                $padding * 2;
 
 $nav_trigger:                   40px;
 $nav_trigger_scale:             10px;
@@ -73,6 +75,7 @@ $medium-font-size:              24px;
 $large-font-size:               36px;
 $nav-hover:                     16px;
 $tag-font-size:                 16px;
+$item_text_title:               20px;
 
 //侧边导航栏宽度
 $nav-side-width:                300px;
@@ -88,4 +91,4 @@ $news-content-width:            60%;
 $font-base:                     PingFangSC-Regular;
 $font-big-base:                 Bauhaus93;
 $nav-font:                      PingFangSC-Light;
-$content-header:                Avenir-Book;
+$content-font:                  Avenir-Book;
