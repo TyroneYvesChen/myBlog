@@ -52,14 +52,14 @@ export default {
         text-align:left;
 
         .index_small_title{
-          font-family:PingFangSC-Regular;
+          font-family:$font-base;
           font-size:$medium-font-size * 1.2;
           color:$black-base-font;
           letter-spacing:0.8px;
         }
 
         .index_big_title{
-          font-family:Bauhaus93;
+          font-family:$font-big-base;
           font-size:$large-font-size * 1.2;
           color:$black-base-font;
           font-weight: bold;

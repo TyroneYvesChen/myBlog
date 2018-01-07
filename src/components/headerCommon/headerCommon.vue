@@ -74,17 +74,17 @@ export default {
             text-align: center;
 
             .index_small_title{
-              font-family:PingFangSC-Regular;
+              font-family:$font-base;
               font-size:$medium-font-size * 1.2;
-              color:$gray-base;
+              color:$header-common-tittle;
               letter-spacing:0.8px;
               text-align: left;
             }
 
             .index_big_title{
-              font-family:Bauhaus93;
+              font-family:$font-big-base;
               font-size:$large-font-size * 1.2;
-              color:$gray-base;
+              color:$header-common-tittle;
               font-weight: bold;
               padding: 30px 0 50px 0;
             }

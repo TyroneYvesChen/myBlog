@@ -45,7 +45,7 @@ body{
 }
 
 body{
-  min-width: 960px;
+  min-width: $min-width;
   overflow-x: hidden;
 }
 

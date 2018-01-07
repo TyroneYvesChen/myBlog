@@ -47,7 +47,8 @@ $gray-base-font:								#BEBEBE;
 $gray-minor-font:								#DCDCDC;
 $arrow-font:									$gray-line-default;
 $place-holder-font:								#C9CDD2;
-
+//header-common 组件title字色
+$header-common-tittle:                          $gray-base;
 
 // Line  Color
 $base-line-color:								$gray-light;
@@ -59,6 +60,8 @@ $primary-active:								$yellow-active;
 $register-active:								$purple-active;
 
 // Width, Height, Padding, Margin
+$min-width:                     960px;
+
 $padding:                       10px;
 $nav_trigger:                   40px;
 $nav_trigger_scale:             10px;
@@ -67,6 +70,19 @@ $little-font-size:              14px;
 $medium-font-size:              24px;
 $large-font-size:               36px;
 $nav-hover:                     16px;
+$tag-font-size:                 16px;
 
+//侧边导航栏宽度
 $nav-side-width:                300px;
-$head-img-size:                   110px;
+//头像图片大小
+$head-img-size:                 110px;
+//news页内容部分上浮距离
+$news-content-top:              -50px;
+//news宽度
+$news-content-width:            60%;
+
+
+//字体
+$font-base:                     PingFangSC-Regular;
+$font-big-base:                 Bauhaus93;
+$nav-font:                      PingFangSC-Light;

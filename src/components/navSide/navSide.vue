@@ -131,7 +131,7 @@ export default {
 
           .nav_item{
             position: relative;
-            font-family:PingFangSC-Light;
+            font-family:$nav-font;
             font-size:$little-font-size;
             color:$gray-nav;
             letter-spacing:2.62px;
@@ -142,7 +142,7 @@ export default {
             cursor: pointer;
             
             &:hover{
-              font-family:PingFangSC-Regular;
+              font-family:$font-base;
               font-size:$nav-hover;
               color:$white-base;
               letter-spacing:3px;
