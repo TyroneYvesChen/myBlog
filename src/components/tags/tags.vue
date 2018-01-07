@@ -1,11 +1,15 @@
 <template>
   <div class="tags_wrap">
     Tag:
-      <div class="tag" v-for="(tag, index) in tags" :key="index">{{ tag }}</div>
+      <div class="tag" v-for="(tag, index) in tags" 
+      @click="openMes"
+      :key="index">{{ tag }}</div>
   </div>
 </template>
 
 <script>
+import { Message } from 'element-ui';
+
 export default {
   name: 'tags',
   data () {
@@ -14,7 +18,14 @@ export default {
     }
   },
   methods: {
-    
+    openMes: () => {
+      console.log(111)
+      let options = {
+        message: '我是可爱的小tag~我有什么功能还不知道呢~',
+        type: 'success'
+      }
+      Message(options)
+    }
   }
 }
 </script>
