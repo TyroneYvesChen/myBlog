@@ -5,24 +5,10 @@
       <!-- 左侧列表 -->
       <div class="content_overview float_left">
 
-        <div class="item clearfix">
-          <div class="img float_left">
-            <img :src="imgSrc.pic1" alt="">
-          </div>
-          <!-- item右侧内容 -->
-          <div class="item_text float_left">
-            <div class="item_text_title">萌汤圆最最帅！！！</div>
-            <div class="item_text_desc">
-              萌汤圆最最帅！！！萌汤圆最最帅！！！萌汤圆最最帅！！！萌汤圆最最帅！！！萌汤圆最最帅！！！
-              萌汤圆最最帅！！！萌汤圆最最帅！！！萌汤圆最最帅！！！萌汤圆最最帅！！！萌汤圆最最帅！！！
-              萌汤圆最最帅！！！萌汤圆最最帅！！！萌汤圆最最帅！！！萌汤圆最最帅！！！萌汤圆最最帅！！！
-            </div>
-            <div class="item_text_sign">
-              <div class="sign_time"></div>
-              <div class="sign_tags"></div>
-            </div>
-          </div>
-        </div>
+        <!-- 左侧列表内item -->
+        <news-list-item v-for="(item, index) in itemArr" :key="index">{{item}}</news-list-item>
+
+
 
       </div>
 
@@ -34,17 +20,20 @@
 
 <script>
 import contentHeader from '@/components/contentHeader/contentHeader'
+import newsListItem from '@/components/newsListItem/newsListItem'
 
 export default {
   name: 'newsList',
   components: {
-    contentHeader
+    contentHeader,
+    newsListItem
   },
   data () {
     return {
       imgSrc: {
         pic1: require('./img/pic1.png')
-      }
+      },
+      itemArr: [,,,,,,,,]
     }
   },
   methods: {
@@ -71,57 +60,6 @@ export default {
           
           .content_overview{
             width: 70%;
-
-            .item{
-              border: 1px solid #ccc;
-              padding: $padding $padding $padding-large;
-
-              .img{
-                width: 30%;
-                padding-top: $padding;
-
-                img{
-                  width: 100%;
-                }
-              }
-              
-              .item_text{
-                width: 70%;
-                padding-left: 5%;
-
-                > div{
-                  text-align: left;
-                }
-
-                .item_text_title{
-                  font-family:$font-base;
-                  font-size:$item_text_title;
-                  color:$black-base;
-                  padding: 0 0 $padding-medium 0;
-                }
-
-                .item_text_desc{
-                  font-family:$content-font;
-                  font-size:16px;
-                  color:$content-font-color;
-                  letter-spacing: 1px;
-                  text-align:left;
-                  @include multiLine(3);
-                }
-
-                .item_text_sign{
-
-                  .sign_time{
-
-                  }
-
-                  .sign_tags{
-
-                  }
-                }
-              }
-            }
-
           }
 
           .content_nav{
