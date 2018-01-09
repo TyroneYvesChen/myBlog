@@ -6,14 +6,15 @@
       <div class="content_overview float_left">
 
         <!-- 左侧列表内item -->
-        <news-list-item v-for="(item, index) in itemArr" :key="index">{{item}}</news-list-item>
-
-
+        <news-list-item v-for="(item, index) in itemArr" 
+          :key="index">{{item}}</news-list-item>
 
       </div>
 
       <!-- 右侧导航 -->
-      <div class="content_nav float_left"></div>
+      <div class="content_nav float_left">
+        <news-nav-collapse></news-nav-collapse>
+      </div>
     </div>
   </div>
 </template>
@@ -21,12 +22,14 @@
 <script>
 import contentHeader from '@/components/contentHeader/contentHeader'
 import newsListItem from '@/components/newsListItem/newsListItem'
+import newsNavCollapse from '@/components/newsNavCollapse/newsNavCollapse'
 
 export default {
   name: 'newsList',
   components: {
     contentHeader,
-    newsListItem
+    newsListItem,
+    newsNavCollapse
   },
   data () {
     return {
@@ -60,10 +63,12 @@ export default {
           
           .content_overview{
             width: 70%;
+            padding-right: 5%;
           }
 
           .content_nav{
             width: 30%;
+            // border: 1px #ccc solid;
 
 
           }

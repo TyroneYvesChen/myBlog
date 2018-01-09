@@ -44,11 +44,11 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import {mapGetters} from 'vuex'
 import { Message } from 'element-ui';
 import { Progress  } from 'element-ui';
-// import 'element-ui/lib/theme-chalk/index.css'
-import Vue from 'vue'
+
 Vue.use(Progress)
 
 export default {
