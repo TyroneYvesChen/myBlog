@@ -2,19 +2,30 @@
   <div class="news_list">
     <content-header></content-header>
     <div class="content_body clearfix">
+
       <!-- 左侧列表 -->
       <div class="content_overview float_left">
-
         <!-- 左侧列表内item -->
         <news-list-item v-for="(item, index) in itemArr" 
           :key="index">{{item}}</news-list-item>
-
       </div>
 
       <!-- 右侧导航 -->
       <div class="content_nav float_left">
-        <news-nav-collapse></news-nav-collapse>
+        <!-- 导航上部手风琴 -->
+        <div class="collapse_wrap">
+          <div class="content_nav_title">Categories</div>
+          <news-nav-collapse></news-nav-collapse>
+        </div>
+        <!-- 导航下部实验室 -->
+        <div class="lab_wrap">
+          <div class="content_nav_title">Link</div>
+
+          <news-nav-lab></news-nav-lab>
+        </div>
+        
       </div>
+
     </div>
   </div>
 </template>
@@ -23,13 +34,15 @@
 import contentHeader from '@/components/contentHeader/contentHeader'
 import newsListItem from '@/components/newsListItem/newsListItem'
 import newsNavCollapse from '@/components/newsNavCollapse/newsNavCollapse'
+import newsNavLab from '@/components/newsNavLab/newsNavLab'
 
 export default {
   name: 'newsList',
   components: {
     contentHeader,
     newsListItem,
-    newsNavCollapse
+    newsNavCollapse,
+    newsNavLab
   },
   data () {
     return {
@@ -70,7 +83,20 @@ export default {
             width: 30%;
             // border: 1px #ccc solid;
 
+            .content_nav_title{
+              font-family:$font-base;
+              font-size:$content-nav-title;
+              color:$content-font-color;
+              padding: $padding 0 $padding-large;
+              text-align:left;
+            }
 
+            .collapse_wrap{
+              padding-bottom: 30px;
+            }
+
+            .lab_wrap{
+            }
           }
         }
       }

@@ -49,10 +49,12 @@ export default {
         // border: 1px solid #ccc;
         padding: $padding $padding-large $padding $padding;
         margin-bottom: 35px;
+        transition: all 0.3s;
         cursor: pointer;
 
         &:hover{
           box-shadow:0 0 24px 0 rgba(0,0,0,0.22);
+          transform: translateY(-3px);
         }
         
         .img{
