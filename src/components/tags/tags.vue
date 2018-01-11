@@ -31,6 +31,7 @@ export default {
 
 <style lang='scss' scoped rel="stylesheet/scss" type="text/css">
       .tags_wrap{
+        padding-bottom: $padding-large;
         font-family:$font-base;
         font-size:$tag-font-size;
         font-weight: bold;

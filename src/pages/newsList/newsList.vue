@@ -1,6 +1,6 @@
 <template>
   <div class="news_list">
-    <content-header></content-header>
+    <!-- NEWS页面 -->
     <div class="content_body clearfix">
 
       <!-- 左侧列表 -->
@@ -31,7 +31,6 @@
 </template>
 
 <script>
-import contentHeader from '@/components/contentHeader/contentHeader'
 import newsListItem from '@/components/newsListItem/newsListItem'
 import newsNavCollapse from '@/components/newsNavCollapse/newsNavCollapse'
 import newsNavLab from '@/components/newsNavLab/newsNavLab'
@@ -39,7 +38,6 @@ import newsNavLab from '@/components/newsNavLab/newsNavLab'
 export default {
   name: 'newsList',
   components: {
-    contentHeader,
     newsListItem,
     newsNavCollapse,
     newsNavLab
@@ -66,9 +64,7 @@ export default {
 
 <style lang='scss' scoped rel="stylesheet/scss" type="text/css">
       .news_list{
-        background-color: $white-base;
-        border-radius: 12px 12px 0 0;
-        box-shadow:0 4px 8px 1px rgba(158, 158, 158, 0.5);
+        
 
         .content_body{
           width: 100%;

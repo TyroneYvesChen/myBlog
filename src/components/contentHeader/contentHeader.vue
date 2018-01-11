@@ -24,8 +24,8 @@ export default {
 
 <style lang='scss' scoped rel="stylesheet/scss" type="text/css">
       .content_header{
-        height: 60px;
-        line-height: 60px;
+        height: 80px;
+        line-height: 80px;
         border-bottom:1px solid #d1d1d1;
 
         .big_title{
