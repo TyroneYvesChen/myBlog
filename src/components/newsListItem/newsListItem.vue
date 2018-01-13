@@ -1,5 +1,5 @@
 <template>
-  <div class="item clearfix">
+  <router-link class="item clearfix" tag="div" :to="postLink">
     <div class="img float_left">
       <img :src="imgSrc.pic1" alt="">
     </div>
@@ -22,15 +22,18 @@
         </div>
       </div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
 
 export default {
   name: 'newsListItem',
-  components: {
-    
+  props: {
+    postId: {
+      type: Number,
+      default: "0"
+    }
   },
   data () {
     return {
@@ -39,7 +42,14 @@ export default {
       },
     }
   },
+  computed: {
+    postLink: function (){
+      return `/newsInnerPage/${this.postId}`
+    }
+  },
   methods: {
+  },
+  mounted (){
   }
 }
 </script>

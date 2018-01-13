@@ -6,8 +6,11 @@
       <!-- 左侧列表 -->
       <div class="content_overview float_left">
         <!-- 左侧列表内item -->
-        <news-list-item v-for="(item, index) in itemArr" 
-          :key="index">{{item}}</news-list-item>
+        <news-list-item v-for="(item, index) in itemArr"
+          :postId="index" 
+          :key="index">
+            {{item}}
+        </news-list-item>
       </div>
 
       <!-- 右侧导航 -->
