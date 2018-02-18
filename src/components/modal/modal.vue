@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     close: function(){    
-      this.$store.dispatch('isCoverShow')
+      this.$store.dispatch('isCoverShow', false)
     }
   },
   mounted (){

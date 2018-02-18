@@ -92,7 +92,7 @@ export default {
   methods: {
     //nav关闭移出事件
     close: function(){
-      this.$store.dispatch('isCoverShow')
+      this.$store.dispatch('isCoverShow', false)
     },
     openMes: () => {
       console.log(111)

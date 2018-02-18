@@ -16,7 +16,7 @@ export default {
   },
   methods: {
     showSide: function(){    
-      this.$store.dispatch('isCoverShow')
+      this.$store.dispatch('isCoverShow', true)
     }
   }
 }
