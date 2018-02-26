@@ -14,7 +14,7 @@
         <router-link class="nav_item" to="/" tag="li" @click.native="close">HOME</router-link>
         <router-link class="nav_item" to="/news" tag="li" @click.native="close">NEWS</router-link>
         <router-link class="nav_item" to="/layout" tag="li" @click.native="close">DEMO</router-link>
-        <li class="nav_item" @click="openMes">LIFE</li>
+        <router-link class="nav_item" to="/timeLinePage" tag="li" @click.native="close">LIFE</router-link>
         <li class="nav_item" @click="openMes">SHOW</li>
         <li class="nav_item" @click="openMes">CAT</li>
       </ul>
