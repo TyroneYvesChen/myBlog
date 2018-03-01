@@ -1,29 +1,37 @@
 <template>
-  <div class="news_page">
+  <div class="layout_wrap">
 
     <header-common></header-common>
 
     <div class="content">
       <!-- tags标签栏 -->
       <tags></tags>
+      <list-bg>
+        
+        <content-header titleContent="NEWS"></content-header>
 
-      <news-list></news-list>
-      
+        <transition 
+          enter-active-class="animated fadeIn">
+          <router-view/>
+        </transition>
+      </list-bg>
     </div>
   </div>
 </template>
 
 <script>
 import headerCommon from '@/components/headerCommon/headerCommon'
+import contentHeader from '@/components/contentHeader/contentHeader'
+import listBg from '@/components/listBg/listBg'
 import tags from '@/components/tags/tags'
-import newsList from '@/components/newsList/newsList'
 
 export default {
-  name: 'news_page',
+  name: 'layout',
   components: {
     headerCommon,
-    tags,
-    newsList
+    contentHeader,
+    listBg,
+    tags
   },
   data: () => {
     return {
@@ -39,7 +47,7 @@ export default {
 </script>
 
 <style lang='scss' scoped rel="stylesheet/scss" type="text/css">
-    .news_page{
+    .layout_wrap{
       
       .content{
         position: relative;

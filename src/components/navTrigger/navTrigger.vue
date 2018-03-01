@@ -10,13 +10,13 @@ export default {
   data () {
     return {
       imgSrc: {
-        navTrigger: require('./img/nav.png')
+        // navTrigger: require('./img/nav.png')
       }
     }
   },
   methods: {
     showSide: function(){    
-      this.$store.dispatch('isCoverShow')
+      this.$store.dispatch('isCoverShow', true)
     }
   }
 }
@@ -30,7 +30,7 @@ export default {
         height: $nav_trigger;
         margin-right: $nav_trigger_scale * 2;
         margin-top: $nav_trigger_scale;
-        background: url('./img/nav.png') no-repeat center;
+        background: url('../../../static/img/nav.png') no-repeat center;
         background-size: 100%;
         box-shadow: 0px 1px 10px 1px #ffffff;
         border-radius: 5px;
@@ -38,7 +38,7 @@ export default {
         cursor: pointer;
 
         &:hover{
-          background: url('./img/navHover.png') no-repeat center;
+          background: url('../../../static/img/navHover.png') no-repeat center;
           background-size: 100%;
           background-color: #ffffff;
         }

@@ -13,8 +13,8 @@
       <ul class="nav_body">
         <router-link class="nav_item" to="/" tag="li" @click.native="close">HOME</router-link>
         <router-link class="nav_item" to="/news" tag="li" @click.native="close">NEWS</router-link>
-        <li class="nav_item" @click="openMes">DEMO</li>
-        <li class="nav_item" @click="openMes">LIFE</li>
+        <router-link class="nav_item" to="/layout" tag="li" @click.native="close">DEMO</router-link>
+        <router-link class="nav_item" to="/timeLinePage" tag="li" @click.native="close">LIFE</router-link>
         <li class="nav_item" @click="openMes">SHOW</li>
         <li class="nav_item" @click="openMes">CAT</li>
       </ul>
@@ -44,11 +44,11 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import {mapGetters} from 'vuex'
 import { Message } from 'element-ui';
 import { Progress  } from 'element-ui';
-// import 'element-ui/lib/theme-chalk/index.css'
-import Vue from 'vue'
+
 Vue.use(Progress)
 
 export default {
@@ -92,7 +92,7 @@ export default {
   methods: {
     //nav关闭移出事件
     close: function(){
-      this.$store.dispatch('isCoverShow')
+      this.$store.dispatch('isCoverShow', false)
     },
     openMes: () => {
       console.log(111)
