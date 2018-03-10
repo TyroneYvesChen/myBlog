@@ -1,17 +1,12 @@
 <template>
   <div class="layout_wrap">
-
     <header-common></header-common>
-
     <div class="content">
       <!-- tags标签栏 -->
       <tags></tags>
       <list-bg>
-        
         <content-header titleContent="NEWS"></content-header>
-
-        <transition 
-          enter-active-class="animated fadeIn">
+        <transition enter-active-class="animated fadeIn">
           <router-view/>
         </transition>
       </list-bg>

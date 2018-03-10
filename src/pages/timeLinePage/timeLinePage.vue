@@ -4,9 +4,10 @@
       <span class="cntl-bar-fill"></span>
     </span>
 
-    <time-line-item></time-line-item>
-    <time-line-item></time-line-item>
-    <time-line-item></time-line-item>
+    <time-line-item v-for="(item, index) in timeLineData"
+      :index="index" 
+      :key="index">
+    </time-line-item>
   </div>
 </template>
 
@@ -21,8 +22,9 @@ export default {
   data () {
     return {
       imgSrc: {
-        pic1: require('./img/pic1.png')
-      }
+        pic1: require('./img/pic1.png'),
+      },
+      timeLineData: [1,2,3,4,5,6,7,8,9,0]
     }
   },
   methods: {
@@ -33,12 +35,15 @@ export default {
       }
       Message(options)
     }
+  },
+  mounted (){
   }
 }
 </script>
 
 <style lang='scss' scoped rel="stylesheet/scss" type="text/css">
       .time_line_page{
+        padding: $padding;
         position: relative;
         width: 100%;
         overflow: hidden;
@@ -65,6 +70,7 @@ export default {
             right:0;
             top:0;
             height:0;
+            transition: all 500ms ease;
           }
         }
       }

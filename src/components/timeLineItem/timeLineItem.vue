@@ -1,22 +1,49 @@
 <template>
-  <div class="time_line_item clearfix">
-    <div class="cntl-content">
+  <div class="time_line_item clearfix" ref="tlItem">
+    <transition :enter-active-class="style">
+      <div class="cntl-content"  v-if="isShow">
         <h4>Title 1</h4>
-        <p>Nullam congue ex diam, id tincidunt augue pellentesque ac. Phasellus ornare nulla tellus, suscipit finibus urna tincidunt non. Nunc fringilla consequat massa.</p>
+        <p @click="openMes">Nullam congue ex diam, id tincidunt augue pellentesque ac. Phasellus ornare nulla tellus, suscipit finibus urna tincidunt non. Nunc fringilla consequat massa.</p>
       </div>
-      <div class="cntl-icon cntl-center">'00</div>
+    </transition>
+    <div class="cntl-icon cntl-center">{{ index }}</div>
   </div>
 </template>
 
 <script>
-import { Message } from 'element-ui';
+import { Message } from 'element-ui'
+import eventBus from '@/assets/js/eventBus'
 
 export default {
   name: 'timeLineItem',
+  props: {
+    index: {
+      type: [String, Number],
+      default: 0
+    }
+  },
   data () {
     return {
-      
+      isShow: false
     }
+  },
+  computed: {
+    /*判断飞入动画左右方向*/
+    style (){
+      return `animated ${this.index % 2 === 0 ? 'fadeInLeftBig' : 'fadeInRightBig'}`
+    }
+  },
+  created (){
+    eventBus.$on('scroll', () => {
+      if (this.isShow) return
+    
+      let dom = this.$refs.tlItem,
+      getBoundingClientRect = dom.getBoundingClientRect(),
+      domTop = getBoundingClientRect.top + 100,
+      windowHeight  = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+ 
+      windowHeight > domTop && this.isCanShow()
+    });
   },
   methods: {
     openMes: () => {
@@ -25,7 +52,12 @@ export default {
         type: 'success'
       }
       Message(options)
+    },
+    isCanShow (ele){
+      this.isShow = true
     }
+  },
+  mounted (){
   }
 }
 </script>
@@ -36,6 +68,7 @@ export default {
         width:100%;
         min-height: 200px;
         margin-bottom: 50px;
+        cursor: pointer;
 
         .cntl-icon {
           border-radius: 50%;

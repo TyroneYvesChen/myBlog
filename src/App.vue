@@ -1,7 +1,6 @@
 <template>
-  <div id="app">
-    <transition 
-      enter-active-class="animated fadeIn">
+  <div id="app" @scroll="scroll()">
+    <transition enter-active-class="animated fadeIn">
       <router-view/>
     </transition>
     
@@ -16,6 +15,7 @@
 <script>
 import modal from '@/components/modal/modal'
 import navSide from '@/components/navSide/navSide'
+import eventBus from '@/assets/js/eventBus'
 
 // vue生态
 // import {mapGetters} from 'vuex'
@@ -26,6 +26,12 @@ export default {
     modal,
     navSide
   },
+  methods: {
+    scroll (){
+      // let scrollTop = ele.currentTarget.scrollTop
+      eventBus.$emit('scroll');   
+    }
+  }
 }
 </script>
 
