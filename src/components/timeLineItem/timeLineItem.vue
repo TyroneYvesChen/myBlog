@@ -1,9 +1,19 @@
 <template>
   <div class="time_line_item clearfix" ref="tlItem">
     <transition :enter-active-class="style">
-      <div class="cntl-content"  v-if="isShow">
+      <div class="cntl-content"  v-show="isShow">
         <h4>Title 1</h4>
-        <p @click="openMes">Nullam congue ex diam, id tincidunt augue pellentesque ac. Phasellus ornare nulla tellus, suscipit finibus urna tincidunt non. Nunc fringilla consequat massa.</p>
+        <p @click="openMes">Nulla
+          m congue ex diam, id tincidunt augue p
+          ellentesque ac. Phasellus ornare nulla tell
+          us, suscipit finibus urna tincidunt non. Nunc fringilla consequat massa.
+          m congue ex diam, id tincidunt augue p
+          ellentesque ac. Phasellus ornare nulla tell
+          us, suscipit finibus urna tincidunt non. Nunc fringilla consequat massa.
+          m congue ex diam, id tincidunt augue p
+          ellentesque ac. Phasellus ornare nulla tell
+          us, suscipit finibus urna tincidunt non. Nunc fringilla consequat massa.
+          </p>
       </div>
     </transition>
     <div class="cntl-icon cntl-center">{{ index }}</div>
@@ -39,10 +49,11 @@ export default {
     
       let dom = this.$refs.tlItem,
       getBoundingClientRect = dom.getBoundingClientRect(),
-      domTop = getBoundingClientRect.top + 100,
+      height = getBoundingClientRect.height,
+      domTop = getBoundingClientRect.top + 200,
       windowHeight  = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
- 
-      windowHeight > domTop && this.isCanShow()
+      console.log(window.getComputedStyle(dom), "clientHeight")
+      windowHeight > domTop && this.isCanShow(height)
     });
   },
   methods: {
@@ -53,8 +64,9 @@ export default {
       }
       Message(options)
     },
-    isCanShow (ele){
+    isCanShow (h){
       this.isShow = true
+      this.$emit('getBarHeight', h)
     }
   },
   mounted (){
@@ -63,25 +75,26 @@ export default {
 </script>
 
 <style lang='scss' scoped rel="stylesheet/scss" type="text/css">
+      $circleSize: 50px;
+
       .time_line_item{
         position: relative;
         width:100%;
-        min-height: 200px;
-        margin-bottom: 50px;
-        cursor: pointer;
+        height: 200px;
+        // padding-bottom: 50px;
 
         .cntl-icon {
           border-radius: 50%;
-          width: 80px;
-          height: 80px;
+          width: $circleSize;
+          height: $circleSize;
           background-color: #00313C;
           border: solid 3px #009ABB;
-          box-shadow: 0px 0px 19px -9px #000;
+          box-shadow: 0px 0px 19px -9px rgb(31, 11, 11);
           position: absolute;
           top: 0;
           text-align: center;
-          line-height: 80px;
-          font-size: 40px;
+          line-height: $circleSize - 4;
+          font-size: $medium-font-size;
           color: #fff;
 
           &.cntl-center {
@@ -99,14 +112,26 @@ export default {
           border-radius: 8px;
           border-bottom: solid 3px #009ABB;
           float:left;
-          // opacity:0;
           position:relative;
+          // opacity:0;
           // margin-left:-40%;
+          cursor: pointer;
+          transition: all 0.3s;
+          
+          &:hover{
+            box-shadow:0 0 24px 0 rgba(0,0,0,0.22);
+            transform: translateY(-3px);
+          }
 
           h4 {
-            font-size:20px;
+            font-size:$medium-font-size;
             font-weight: normal;
             margin-bottom: 10px;
+          }
+
+          p {
+            font-size: 18px;
+            @include multiLine(4);
           }
         }
 

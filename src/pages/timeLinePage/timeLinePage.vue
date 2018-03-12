@@ -1,11 +1,12 @@
 <template>
   <div class="time_line_page">
     <span class="cntl-bar cntl-center">
-      <span class="cntl-bar-fill"></span>
+      <span class="cntl-bar-fill" :style="{height: barHeight + 'px'}"></span>
     </span>
 
     <time-line-item v-for="(item, index) in timeLineData"
       :index="index" 
+      @getBarHeight="getBarHeight" 
       :key="index">
     </time-line-item>
   </div>
@@ -24,7 +25,8 @@ export default {
       imgSrc: {
         pic1: require('./img/pic1.png'),
       },
-      timeLineData: [1,2,3,4,5,6,7,8,9,0]
+      timeLineData: [1,2,3,4,5,6,7,8,9,0],
+      barHeight: 0
     }
   },
   methods: {
@@ -34,6 +36,9 @@ export default {
         type: 'success'
       }
       Message(options)
+    },
+    getBarHeight (h){
+      this.barHeight += h
     }
   },
   mounted (){
@@ -43,23 +48,23 @@ export default {
 
 <style lang='scss' scoped rel="stylesheet/scss" type="text/css">
       .time_line_page{
-        padding: $padding;
+        padding: $padding-large;
         position: relative;
         width: 100%;
         overflow: hidden;
 
         .cntl-center {
           left:0;
-            right:0;
-            margin-left:auto;
-            margin-right:auto;
+          right:0;
+          margin-left:auto;
+          margin-right:auto;
         }
 
         .cntl-bar {
           position: absolute;
           width: 10px;
-          top: 0;
-          bottom: 0;
+          top: $padding-large;
+          bottom: $padding-large;
           background-color: #ccc;
           box-shadow: inset 0px 0px 7px -2px #000;
 
