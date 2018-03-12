@@ -6,6 +6,7 @@ import router from './router'
 import store from './store/store'
 import httpServer from './assets/js/api/api'
 import * as filters from './assets/js/filters';
+import resize from './assets/js/resize';
 
 
 Vue.prototype.$http = httpServer
