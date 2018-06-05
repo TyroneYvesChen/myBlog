@@ -15,7 +15,7 @@
 <script>
 import modal from '@/components/modal/modal'
 import navSide from '@/components/navSide/navSide'
-import eventBus from '@/assets/js/eventBus'
+import eventBus from '@/util/eventBus'
 
 // vue生态
 // import {mapGetters} from 'vuex'

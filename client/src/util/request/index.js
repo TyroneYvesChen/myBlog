@@ -1,5 +1,5 @@
 import axios from 'axios'
-import store from '../../../store/store'
+import store from '../../store/store'
 import storage from '../storage'
 import * as types from './config'
 
@@ -9,7 +9,7 @@ let qs = require('qs')
 //超时拦截/报错 根据返回值判断/请求失败了 是否再次请求/超过5次 自动断掉
 
 
-const baseURL = ""
+const baseURL = "http://localhost:8888"
 
 let CancelToken = axios.CancelToken,
     source = CancelToken.source()
@@ -52,7 +52,7 @@ httpServer.interceptors.request.use(function (config) {
     }
   }
 
-  console.log(config)
+  console.log(config.data)
 
   params && router && (config.headers.router = router)
 

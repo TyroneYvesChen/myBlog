@@ -22,7 +22,7 @@
 
 <script>
 import { Message } from 'element-ui'
-import eventBus from '@/assets/js/eventBus'
+import eventBus from '@/util/eventBus'
 
 export default {
   name: 'timeLineItem',

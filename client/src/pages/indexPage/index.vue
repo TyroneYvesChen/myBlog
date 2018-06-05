@@ -48,7 +48,7 @@ export default {
       @include bgAuto('./img/index_bg_little.png');
      
       .content{
-        @include center(-135%);
+        @include center(-108%);
         text-align:left;
 
         .index_small_title{
@@ -77,5 +77,30 @@ export default {
           cursor: pointer;
         }
       }
+
+      @media screen and (min-width:1366px){
+        .content {
+          
+          .index_small_title{
+            font-size:$medium-font-size * 1.5;
+          }
+          .index_big_title{
+            font-size:$large-font-size * 1.5;
+          }
+        }
+      }
+
+       @media screen and (max-width:1080px){
+        .content {
+          
+          .index_small_title{
+            font-size:$medium-font-size * 0.9;
+          }
+          .index_big_title{
+            font-size:$large-font-size * 0.9;
+          }
+        }
+      }
     }
+      
 </style>

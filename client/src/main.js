@@ -4,12 +4,12 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store/store'
-import httpServer from './assets/js/api/api'
-import * as filters from './assets/js/filters';
-import resize from './assets/js/resize';
+// import httpServer from './util/request'
+import * as filters from './util/filters';
+import resize from './util/resize';
 
 
-Vue.prototype.$http = httpServer
+// Vue.prototype.$http = httpServer
 
 Vue.config.productionTip = true
 

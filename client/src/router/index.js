@@ -32,7 +32,7 @@ export default new Router({
     //   component: news
     // },
     {
-      path: '/HelloWorld',
+      path: '/wocao',
       name: 'HelloWorld',
       component: HelloWorld
     },

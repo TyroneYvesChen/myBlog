@@ -21,19 +21,28 @@
 </template>
 
 <script>
+import * as API from "@/api/wocao";
 export default {
-  name: 'HelloWorld',
-  data () {
+  name: "HelloWorld",
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+      msg: "Welcome to Your Vue.js App"
+    };
+  },
+  mounted() {
+    let options = {
+      username: "ty",
+      password: "menmenda"
+    };
+    API.wocao(options);
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 ul {
