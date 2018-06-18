@@ -1,6 +1,6 @@
 import express from 'express'
 import db from './middleware/db'
-import router from './lib/wocao/router'
+import appRouter from './router'
 import { PORT } from './config'
 import bodyParser from 'body-parser'
 
@@ -22,7 +22,7 @@ app.all('/*', (req, res, next) => {
     }
 })
 
-app.use('/', router)
+appRouter(app)
 // app.use('/', (req, res) => {
 //     res.send('hello world~~~!!!')
 // })

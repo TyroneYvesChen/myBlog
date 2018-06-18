@@ -10,7 +10,7 @@ const WoCao = new Schema({
     }
 },
 {
-    collection: 'wocao',
+    collection: 'wocao',    //集合名
     timestamps: { createdAt: 'createdAt', updatedAt: 'updatedAt' }
 })
 

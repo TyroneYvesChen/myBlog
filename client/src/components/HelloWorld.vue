@@ -31,10 +31,15 @@ export default {
   },
   mounted() {
     let options = {
+      account: 'wocao',
       username: "ty",
-      password: "menmenda"
+      // password: "menmenda"
     };
-    API.wocao(options);
+    API.login(options).then( v => {
+      console.log(v, '返回值')
+    }, e => {
+      console.log(e)
+    });
   }
 };
 </script>

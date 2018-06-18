@@ -7,8 +7,8 @@ mongoose.connect(`${MONGO_URL}${MONGO_DB}`)
 const conn = mongoose.connection;
 //创建Schema
 const Schema = mongoose.Schema;
-//使用Connetion监听连接状态
 
+//使用Connetion监听连接状态
 conn.on('connected', function (err) {
     if (err) {
         console.log('连接数据库失败：' + err);
