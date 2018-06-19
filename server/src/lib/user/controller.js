@@ -36,7 +36,6 @@ const login = async (req, res, next) => {
 
     try {
         const result = await userManager.findOneByAccount(account)
-        console.log(111111111111111111111111111111)
         if (result.password !== password) {
             return res.json(errorResult('密码错误', 105))
         }

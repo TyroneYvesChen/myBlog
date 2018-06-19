@@ -1,5 +1,7 @@
 .DS_Store
 
+node_modules/
+
 server/node_modules/
 server/src/config.js
 
@@ -17,3 +19,11 @@ client/*.suo
 client/*.ntvs*
 client/*.njsproj
 client/*.sln
+
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+

@@ -93,7 +93,7 @@ httpServer.interceptors.response.use(function (response) {
   //记录请求数 --
   store.dispatch("httpCounts",false)
 
-  return response;
+  return data;
 }, function (error) {
   // 返回状态码不为200时候的错误处理
 

@@ -1,0 +1,23 @@
+{
+  "name": "myblog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "wocao": "concurrently --kill-others \"cd client && npm run dev\" \"cd server && npm run dev\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TyroneYvesChen/myBlog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TyroneYvesChen/myBlog/issues"
+  },
+  "homepage": "https://github.com/TyroneYvesChen/myBlog#readme",
+  "dependencies": {
+    "concurrently": "^3.6.0"
+  }
+}
