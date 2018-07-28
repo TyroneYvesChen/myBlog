@@ -12,6 +12,9 @@ client/npm-debug.log*
 client/yarn-debug.log*
 client/yarn-error.log*
 
+managementSystem/node_modules/
+managementSystem/dist/
+
 # Editor directories and files
 client/.idea
 client/.vscode

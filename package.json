@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/TyroneYvesChen/myBlog#readme",
   "dependencies": {
-    "concurrently": "^3.6.0"
+    "concurrently": "^3.6.0",
+    "create-react-app": "^1.5.2"
   }
 }
