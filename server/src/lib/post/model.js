@@ -4,7 +4,7 @@ const PostSchema = new Schema(
   {
     title: { type: String, default: '' },
     markdown: { type: String, default: '' },        // markdown原文
-    html: { type: String, default: '' },            // markdown编译后的HTML
+    // html: { type: String, default: '' },            // markdown编译后的HTML
     images: { type: Array, default: null },
     tag: { type: Array, default: null },
     category: { type: String, default: null },      //所属分类

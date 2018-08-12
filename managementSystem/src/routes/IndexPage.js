@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import styles from './IndexPage.css';
+import hah from './index.scss';
 
 function IndexPage() {
   return (
@@ -12,6 +13,9 @@ function IndexPage() {
         <li><a href="https://github.com/dvajs/dva-docs/blob/master/v1/en-us/getting-started.md">Getting Started</a></li>
         <li>wocao</li>
       </ul>
+      <div className={hah.wocao}>
+        <div className={hah.item}>我就测试一下信不信</div>
+      </div>
     </div>
   );
 }
