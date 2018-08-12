@@ -73,7 +73,6 @@ class EditableCell extends React.Component {
   };
 
   render() {
-    console.log(this.props)
     const {
       editing,
       dataIndex,
@@ -108,16 +107,28 @@ class EditableCell extends React.Component {
   }
 }
 
-class EditableTable extends React.Component {
+class PostList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { data, editingKey: '' };
+    this.initializeColumns()
+  }
+  state = {
+    selectedRowKeys: [], // Check here to configure the default column
+    loading: false,
+    data: [],
+    editingKey: ''
+  };
+  componentWillMount() {
+    this.setState({ data: data });
+  }
+
+  initializeColumns() {
     this.columns = columns.map(v => {
-      v. editable = true
+      v.editable = true
       return v
     })
     this.columns.push({
-      title: 'operation',
+      title: '操作',
       dataIndex: 'operation',
       render: (text, record) => {
         const editable = this.isEditing(record);
@@ -150,6 +161,31 @@ class EditableTable extends React.Component {
         );
       },
     })
+  }
+
+  deleteFn = () => {
+    this.setState({ loading: true });
+    const { selectedRowKeys, data } = this.state;
+    console.log(selectedRowKeys)
+    const arr = data.filter(v => {
+      return !selectedRowKeys.some(val => {
+        return val === v.key
+      })
+    })
+    console.log(arr)
+    // ajax request after empty completing
+    setTimeout(() => {
+      this.setState({
+        selectedRowKeys: [],
+        loading: false,
+        data: arr
+      });
+    }, 1000);
+  }
+
+  onSelectChange = (selectedRowKeys) => {
+    console.log('selectedRowKeys changed: ', selectedRowKeys);
+    this.setState({ selectedRowKeys });
   }
 
   isEditing = (record) => {
@@ -186,13 +222,17 @@ class EditableTable extends React.Component {
   };
 
   render() {
+    const { loading, selectedRowKeys, data } = this.state;
     const components = {
       body: {
         row: EditableFormRow,
         cell: EditableCell,
       },
     };
-
+    const rowSelection = {
+      selectedRowKeys,
+      onChange: this.onSelectChange,
+    };
     const columns = this.columns.map((col) => {
       if (!col.editable) {
         return col;
@@ -201,73 +241,13 @@ class EditableTable extends React.Component {
         ...col,
         onCell: record => ({
           record,
-          inputType: col.dataIndex === 'age' ? 'number' : 'text',
+          inputType: col.dataIndex === 'category' ? 'number' : 'text',
           dataIndex: col.dataIndex,
           title: col.title,
           editing: this.isEditing(record),
         }),
       };
     });
-
-    return (
-      <Table
-        components={components}
-        bordered
-        dataSource={this.state.data}
-        columns={columns}
-        rowClassName="editable-row"
-      />
-    );
-  }
-}
-
-
-
-
-
-class PostList extends React.Component {
-  state = {
-    selectedRowKeys: [], // Check here to configure the default column
-    loading: false,
-    data: []
-  };
-
-  deleteFn = () => {
-    this.setState({ loading: true });
-    const { selectedRowKeys, data } = this.state;
-    console.log(selectedRowKeys)
-    const arr = data.filter(v => {
-      return !selectedRowKeys.some(val => {
-        return val === v.key
-      })
-    })
-    console.log(arr)
-    // ajax request after empty completing
-    setTimeout(() => {
-      this.setState({
-        selectedRowKeys: [],
-        loading: false,
-        data: arr
-      });
-    }, 1000);
-  }
-
-  onSelectChange = (selectedRowKeys) => {
-    console.log('selectedRowKeys changed: ', selectedRowKeys);
-    this.setState({ selectedRowKeys });
-  }
-
-  componentWillMount() {
-    this.setState({ data: data });
-  }
-
-
-  render() {
-    const { loading, selectedRowKeys, data } = this.state;
-    const rowSelection = {
-      selectedRowKeys,
-      onChange: this.onSelectChange,
-    };
     const hasSelected = selectedRowKeys.length > 0;
     return (
       <div>
@@ -285,11 +265,15 @@ class PostList extends React.Component {
           </span>
         </div>
         <Table
+          components={components}
+          bordered
           rowSelection={rowSelection}
           columns={columns}
           dataSource={data}
           expandedRowRender={record => <p style={{ margin: 0 }}>{record.title}</p>}
-          loading={loading} />
+          loading={loading}
+          rowClassName="editable-row"
+        />
       </div>
     );
   }
@@ -298,4 +282,4 @@ class PostList extends React.Component {
 PostList.propTypes = {
 };
 
-export default connect()(EditableTable);
+export default connect()(PostList);
