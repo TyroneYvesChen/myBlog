@@ -1,5 +1,5 @@
 import dva from 'dva';
-import './index.css';
+import './styles/index.scss';
 
 // 1. Initialize
 const app = dva();

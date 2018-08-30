@@ -9,6 +9,7 @@ import {
 
 import wocao from '../wocao';
 import postList from '../postList';
+import login from '../login';
 
 import { Layout, Menu, Icon } from 'antd';
 
@@ -38,11 +39,17 @@ class IndexLayout extends React.Component {
             <div className={styles.logo} />
             {/* 左侧导航栏 */}
             <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+              <Menu.Item key="1">
+                <NavLink to="/login">
+                  <Icon type="user" />
+                  <span>登陆</span>
+                </NavLink>
+              </Menu.Item>
               <SubMenu title={<span><Icon type="file-text" /><span>文章管理</span></span>}>
                 <Menu.Item key="1">
                   <NavLink to="/home/postList">
-                  <Icon type="user" />
-                  <span>文章列表</span>
+                    <Icon type="user" />
+                    <span>文章列表</span>
                   </NavLink>
                 </Menu.Item>
                 <Menu.Item key="2">
@@ -75,9 +82,9 @@ class IndexLayout extends React.Component {
             </Header>
             {/* 右侧子路由 */}
             <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 }}>
+              <Route path='/login' component={login} />
               <Route path='/home/wocao' component={wocao} />
               <Route path='/home/postList' component={postList} />
-              Content
             </Content>
 
           </Layout>
