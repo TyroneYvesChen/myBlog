@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'dva';
 import styles from './index.scss';
 // import '../../styles/index.scss';
-
+// import PropTypes from 'prop-types'
+import { withRouter } from 'dva/router';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 
 const FormItem = Form.Item;
@@ -12,26 +13,28 @@ class LoginForm extends React.Component {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             console.log(err)
-            if (!err) {
-                console.log('Received values of form: ', values);
-            }
+            if (err) return
+            const {remember} = values
+            this.props.history.push('/');
+            console.log('Received values of form: ', values);
         });
     }
 
     render() {
+        // console.log(this.props.form)
         const { getFieldDecorator } = this.props.form;
         return (
             <Form onSubmit={this.handleSubmit} className={`vetically ${styles.login__form}`}>
                 <FormItem>
                     {getFieldDecorator('userName', {
-                        rules: [{ required: true, message: 'Please input your username!' }],
+                        rules: [{ required: true, message: 'Username 不能为空！' }],
                     })(
                         <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
                     )}
                 </FormItem>
                 <FormItem>
                     {getFieldDecorator('password', {
-                        rules: [{ required: true, message: 'Please input your Password!' }],
+                        rules: [{ required: true, message: 'Password 不能为空！' }],
                     })(
                         <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
                     )}
@@ -53,9 +56,13 @@ class LoginForm extends React.Component {
         );
     }
 }
-const Login = Form.create()(LoginForm);
+const TLogin = Form.create()(LoginForm);
 
-Login.propTypes = {
+TLogin.propTypes = {
+    // router: PropTypes.object.isRequired
 };
 
-export default connect()(Login);
+const Login = withRouter(connect()(TLogin))
+
+// export default connect()(Login);
+export default Login
