@@ -11,12 +11,18 @@ const FormItem = Form.Item;
 class LoginForm extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
+        const { dispatch, user } = this.props
+        console.log(dispatch)
+        console.log(user)
         this.props.form.validateFields((err, values) => {
-            console.log(err)
+            console.log(err, 'err')
             if (err) return
-            const {remember} = values
-            this.props.history.push('/');
-            console.log('Received values of form: ', values);
+            console.log(values)
+            dispatch({
+                type: 'user/fetchToken',
+                payload: values,
+            });
+            // this.props.history.push('/');
         });
     }
 
@@ -62,7 +68,7 @@ TLogin.propTypes = {
     // router: PropTypes.object.isRequired
 };
 
-const Login = withRouter(connect()(TLogin))
+const Login = withRouter(connect(({ user }) => ({ user }))(TLogin))
 
 // export default connect()(Login);
 export default Login
