@@ -68,7 +68,10 @@ TLogin.propTypes = {
     // router: PropTypes.object.isRequired
 };
 
-const Login = withRouter(connect(({ user }) => ({ user }))(TLogin))
+
+const mapStateToProps = ({ user }) =>({ user })
+
+const Login = withRouter(connect(mapStateToProps)(TLogin))
 
 // export default connect()(Login);
 export default Login
