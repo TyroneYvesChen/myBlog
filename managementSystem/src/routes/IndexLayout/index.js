@@ -3,7 +3,9 @@ import { connect } from 'dva';
 import styles from './index.scss';
 import {
   NavLink,
-  BrowserRouter as Router,
+  // BrowserRouter as Router,
+  HashRouter as Router,
+  // Link,
   Route,
 } from "dva/router";
 
@@ -38,15 +40,15 @@ class IndexLayout extends React.Component {
           >
             <div className={styles.logo} />
             {/* 左侧导航栏 */}
-            <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+            <Menu theme="dark" mode="inline" defaultSelectedKeys={[]}>
               <Menu.Item key="1">
-                <NavLink to="/login">
+                <NavLink to="/login" replace>
                   <Icon type="user" />
                   <span>登陆</span>
                 </NavLink>
               </Menu.Item>
               <SubMenu title={<span><Icon type="file-text" /><span>文章管理</span></span>}>
-                <Menu.Item key="1">
+                <Menu.Item key="66">
                   <NavLink to="/home/postList">
                     <Icon type="user" />
                     <span>文章列表</span>
@@ -64,7 +66,7 @@ class IndexLayout extends React.Component {
                 </Menu.Item>
               </SubMenu>
               <SubMenu title="测试">
-                <Menu.Item key="1">
+                <Menu.Item key="99">
                   <Icon type="user" />
                   <span>测试</span>
                 </Menu.Item>

@@ -1,8 +1,14 @@
 import dva from 'dva';
 import './styles/index.scss';
+// import { browserHistory } from 'dva/router';
+// import { useRouterHistory } from 'dva/router';
+// import { createHashHistory } from 'history';
 
 // 1. Initialize
-const app = dva();
+const app = dva({
+    //   history: browserHistory,
+    // history: useRouterHistory(createHashHistory)({ queryKey: false }),
+});
 
 // 2. Plugins
 // app.use({});

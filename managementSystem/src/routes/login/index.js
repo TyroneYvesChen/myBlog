@@ -21,8 +21,11 @@ class LoginForm extends React.Component {
             dispatch({
                 type: 'user/fetchToken',
                 payload: values,
-            });
-            // this.props.history.push('/');
+            })
+            // .then( _ => {
+            //     console.log(user)
+            //     this.props.history.push('/')
+            // });
         });
     }
 

@@ -4,11 +4,13 @@ import { Router, Route, Switch } from 'dva/router';
 import IndexLayout from './routes/IndexLayout';
 // import wocao from './routes/wocao';
 
-function RouterConfig({ history }) {
+function RouterConfig(data) {
+  console.log(data)
+  const { history } = data
   return (
     <Router history={history}>
       <Switch>
-        <Route path="/" exact component={IndexLayout}/>
+        <Route path="/" component={IndexLayout}/>
         {/* <Route path="/wocao" exact component={wocao} /> */}
       </Switch>
     </Router>
