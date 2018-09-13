@@ -9,14 +9,14 @@ export default {
   },
 
   effects: {
-    * login({ payload },{select,call, put}){
-    //这里state是所有model的state，如获取model  app下的state的isLogin就写，state.app.isLogin
-    const isLogin = yield select(state => state.isLogin);
-    console.log('logincheck',isLogin);
-    if(isLogin === false){
-      yield put((routerRedux.push('/login')));
-    }
-},
+    * checkLoginStatus({ payload }, { select, call, put }) {
+      //这里state是所有model的state，如获取model  app下的state的isLogin就写，state.app.isLogin
+      const user = yield select(state => state.user);
+      console.log(user, 'userModel');
+      if (!user.token) {
+        yield put((routerRedux.replace('/login')));
+      }
+    },
 
   },
 
@@ -31,9 +31,12 @@ export default {
       return history.listen((location) => {
         const { pathname, search } = location
         console.log(location)
-        if (typeof window.ga !== 'undefined') {
-          window.ga('send', 'pageview', pathname + search);
-        }
+        dispatch({
+          type: 'checkLoginStatus'
+        })
+        // if (typeof window.ga !== 'undefined') {
+        //   window.ga('send', 'pageview', pathname + search);
+        // }
       });
     },
   },
