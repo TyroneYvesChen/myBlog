@@ -1,5 +1,7 @@
 import dva from 'dva';
 import './styles/index.scss';
+import utils from 'utils/storage';
+console.log(utils, 'utils')
 // import { browserHistory } from 'dva/router';
 // import { useRouterHistory } from 'dva/router';
 // import { createHashHistory } from 'history';
