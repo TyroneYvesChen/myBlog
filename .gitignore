@@ -3,7 +3,6 @@
 node_modules/
 
 server/node_modules/
-server/src/config.js
 
 client/.DS_Store
 client/node_modules/
