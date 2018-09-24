@@ -5,7 +5,7 @@ import IndexLayout from './routes/IndexLayout';
 // import wocao from './routes/wocao';
 
 function RouterConfig(data) {
-  console.log(data)
+  // console.log(data)
   const { history } = data
   return (
     <Router history={history}>

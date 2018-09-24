@@ -14,7 +14,7 @@ export default {
       const user = yield select(state => state.user);
       console.log(user, 'userModel');
       if (!user.token) {
-        yield put((routerRedux.replace('/login')));
+        yield put((routerRedux.push('/login')));
       }
     },
 
@@ -31,9 +31,11 @@ export default {
       return history.listen((location) => {
         const { pathname, search } = location
         console.log(location)
-        dispatch({
-          type: 'checkLoginStatus'
-        })
+        if (pathname !== '/login'){
+          dispatch({
+            type: 'checkLoginStatus'
+          })
+        }
         // if (typeof window.ga !== 'undefined') {
         //   window.ga('send', 'pageview', pathname + search);
         // }
