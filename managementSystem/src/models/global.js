@@ -13,9 +13,10 @@ export default {
       //这里state是所有model的state，如获取model  app下的state的isLogin就写，state.app.isLogin
       const user = yield select(state => state.user);
       console.log(user, 'userModel');
-      if (!user.token) {
-        yield put((routerRedux.push('/login')));
-      }
+      // 将router的跳转限制改到IndexLayout中
+      // if (!user.token) {
+      //   yield put((routerRedux.push('/login')));
+      // }
     },
 
   },

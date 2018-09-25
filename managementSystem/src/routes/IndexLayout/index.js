@@ -7,6 +7,8 @@ import {
   HashRouter as Router,
   // Link,
   Route,
+  Redirect,
+  Switch
 } from "dva/router";
 
 import wocao from '../wocao';
@@ -17,6 +19,20 @@ import { Layout, Menu, Icon } from 'antd';
 
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
+
+const routersList = [
+  // {
+  //   path: '/login',
+  //   component: login
+  // },
+  {
+    path: '/home/wocao',
+    component: wocao
+  }, {
+    path: '/home/postList',
+    component: postList
+  },
+]
 
 class IndexLayout extends React.Component {
   state = {
@@ -30,6 +46,7 @@ class IndexLayout extends React.Component {
   }
 
   render() {
+    const { dispatch, user } = this.props
     return (
       <Router>
         <Layout className={styles.wrap}>
@@ -84,9 +101,24 @@ class IndexLayout extends React.Component {
             </Header>
             {/* 右侧子路由 */}
             <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 }}>
-              <Route path='/login' component={login} />
+              <Switch>
+                {/* <Route path='/login' component={login} />
               <Route path='/home/wocao' component={wocao} />
-              <Route path='/home/postList' component={postList} />
+              <Route path='/home/postList' component={postList} /> */}
+                <Route path='/login' component={login} />
+                {
+                  // 判断user中的token有没有，没有的话就重定向
+                  user.token ?
+                    routersList.map(v => <Route path={v.path} component={v.component} key={v.path} />)
+                    : <Redirect
+                      to={{
+                        pathname: "/login",
+                        state: { from: this.props.location }
+                      }}
+                    />
+                }
+              </Switch>
+
             </Content>
 
           </Layout>
@@ -99,4 +131,6 @@ class IndexLayout extends React.Component {
 IndexLayout.propTypes = {
 };
 
-export default connect()(IndexLayout);
+const mapStateToProps = ({ user }) => ({ user })
+
+export default connect(mapStateToProps)(IndexLayout);
