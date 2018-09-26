@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'dva';
 import styles from './index.scss';
-import {
-  NavLink,
-  BrowserRouter as Router,
-  Route,
-} from "dva/router";
+// import {
+//   NavLink,
+//   BrowserRouter as Router,
+//   Route,
+// } from "dva/router";
 
 import { Table, Button, Input, InputNumber, Popconfirm, Form } from 'antd';
 
@@ -129,6 +129,7 @@ class PostList extends React.Component {
     })
     this.columns.push({
       title: '操作',
+      width: 200,
       dataIndex: 'operation',
       render: (text, record) => {
         const editable = this.isEditing(record);
@@ -139,7 +140,6 @@ class PostList extends React.Component {
                 <EditableContext.Consumer>
                   {form => (
                     <a
-                      href="javascript:;"
                       onClick={() => this.save(form, record.key)}
                       style={{ marginRight: 8 }}
                     >
@@ -155,7 +155,10 @@ class PostList extends React.Component {
                 </Popconfirm>
               </span>
             ) : (
-                <a onClick={() => this.edit(record.key)}>Edit</a>
+                <div>
+                  <a className={styles.table__btn} onClick={() => this.edit(record.key)}>Fast Edit</a>
+                  <a className={styles.table__btn} onClick={() => void 1}>Edit Details</a>
+                </div>
               )}
           </div>
         );

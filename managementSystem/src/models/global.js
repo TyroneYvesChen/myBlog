@@ -1,4 +1,4 @@
-import { routerRedux } from 'dva/router';
+// import { routerRedux } from 'dva/router';
 
 export default {
   namespace: 'global',
@@ -30,7 +30,7 @@ export default {
       console.log(history)
       // Subscribe history(url) change, trigger `load` action if pathname is `/`
       return history.listen((location) => {
-        const { pathname, search } = location
+        const { pathname } = location
         console.log(location)
         if (pathname !== '/login'){
           dispatch({

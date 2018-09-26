@@ -108,7 +108,8 @@ class IndexLayout extends React.Component {
                 <Route path='/login' component={login} />
                 {
                   // 判断user中的token有没有，没有的话就重定向
-                  user.token ?
+                  // user.token ?
+                  1 ?
                     routersList.map(v => <Route path={v.path} component={v.component} key={v.path} />)
                     : <Redirect
                       to={{
