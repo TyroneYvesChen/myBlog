@@ -118,8 +118,8 @@ class PostList extends React.Component {
     data: [],
     editingKey: ''
   };
-  componentWillMount() {
-    this.setState({ data: data });
+  componentDidMount() {
+    setTimeout(_ => this.setState({ data: data }), 300)
   }
 
   initializeColumns() {

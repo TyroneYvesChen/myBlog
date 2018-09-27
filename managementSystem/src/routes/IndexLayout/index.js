@@ -11,6 +11,8 @@ import {
   Switch
 } from "dva/router";
 
+import { flatten } from 'utils';
+
 import wocao from '../wocao';
 import postList from '../postList';
 import login from '../login';
@@ -26,11 +28,24 @@ const routersList = [
   //   component: login
   // },
   {
-    path: '/home/wocao',
-    component: wocao
-  }, {
-    path: '/home/postList',
-    component: postList
+    title: '文章管理',
+    iconType: 'file-text',
+    children: [{
+      path: '/home/postList',
+      component: postList,
+      title: '文章列表',
+      iconType: 'user',
+    }, {
+      path: '/home/wocao',
+      component: wocao,
+      title: 'wocao',
+      iconType: 'video-camera',
+    }, {
+      path: '/home/hhh',
+      component: wocao,
+      title: 'wocao',
+      iconType: 'upload',
+    },]
   },
 ]
 
@@ -43,6 +58,45 @@ class IndexLayout extends React.Component {
     this.setState({
       collapsed: !this.state.collapsed,
     });
+  }
+
+  renderMenu(data) {
+    return data.map(v => {
+      const { title, iconType, component, path, children } = v
+      return children ? (
+        <SubMenu
+          title={
+            <span><Icon type={iconType} /><span>
+            </span>{title}</span>
+          }
+          key={title}>
+          {
+            this.renderMenu(children)
+          }
+        </SubMenu>
+      )
+        : (
+          <Menu.Item key={path}>
+            <NavLink to={path} replace>
+              <Icon type={iconType} />
+              <span>{title}</span>
+            </NavLink>
+          </Menu.Item>
+        )
+
+    })
+  }
+
+  renderRoute() {
+    const keys = ['title', 'iconType', 'path', 'component']
+    const routeDom = flatten(routersList, keys).filter(v => v.path)
+    console.log(routeDom, 'routeDom.........')
+    return routeDom.map(v =>
+      <Route
+        path={v.path}
+        component={v.component}
+        key={v.path} />
+    )
   }
 
   render() {
@@ -64,30 +118,9 @@ class IndexLayout extends React.Component {
                   <span>登陆</span>
                 </NavLink>
               </Menu.Item>
-              <SubMenu title={<span><Icon type="file-text" /><span>文章管理</span></span>}>
-                <Menu.Item key="66">
-                  <NavLink to="/home/postList">
-                    <Icon type="user" />
-                    <span>文章列表</span>
-                  </NavLink>
-                </Menu.Item>
-                <Menu.Item key="2">
-                  <NavLink to="/home/wocao">
-                    <Icon type="video-camera" />
-                    <span>nav 2</span>
-                  </NavLink>
-                </Menu.Item>
-                <Menu.Item key="3">
-                  <Icon type="upload" />
-                  <span>nav 3</span>
-                </Menu.Item>
-              </SubMenu>
-              <SubMenu title="测试">
-                <Menu.Item key="99">
-                  <Icon type="user" />
-                  <span>测试</span>
-                </Menu.Item>
-              </SubMenu>
+              {
+                this.renderMenu(routersList)
+              }
             </Menu>
 
           </Sider>
@@ -110,7 +143,7 @@ class IndexLayout extends React.Component {
                   // 判断user中的token有没有，没有的话就重定向
                   // user.token ?
                   1 ?
-                    routersList.map(v => <Route path={v.path} component={v.component} key={v.path} />)
+                    this.renderRoute()
                     : <Redirect
                       to={{
                         pathname: "/login",
