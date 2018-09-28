@@ -14,7 +14,8 @@ export default {
     ["module-resolver", {
       "root": ["./src"],
       "alias": {
-        "utils": "./src/utils"
+        "utils": "./src/utils",
+        "components": "./src/components",
       }
     }]
   ]

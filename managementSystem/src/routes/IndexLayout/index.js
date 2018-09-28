@@ -15,6 +15,7 @@ import { flatten } from 'utils';
 
 import wocao from '../wocao';
 import postList from '../postList';
+import postPage from '../postPage';
 import login from '../login';
 
 import { Layout, Menu, Icon } from 'antd';
@@ -36,6 +37,11 @@ const routersList = [
       title: '文章列表',
       iconType: 'user',
     }, {
+      path: '/home/newPost',
+      component: postPage,
+      title: '新建文章',
+      iconType: 'user',
+    },{
       path: '/home/wocao',
       component: wocao,
       title: 'wocao',
