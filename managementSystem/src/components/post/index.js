@@ -50,9 +50,28 @@ class PostForm extends React.Component {
         console.log(this.state)
         const { getFieldDecorator } = this.props.form
         const { formData } = this.state
+
+        const formItemLayout = {
+            labelCol: {
+              xs: { span: 24 },
+              sm: { span: 8 },
+            },
+            wrapperCol: {
+              xs: { span: 24 },
+              sm: { span: 16 },
+            },
+          };
+
+          const formItemLayoutWithOutLabel = {
+            wrapperCol: {
+              xs: { span: 24, offset: 0 },
+              sm: { span: 16, offset: 8 },
+            },
+          };
+
         return (
-            <Form onSubmit={this.handleSubmit} layout="inline">
-                <FormItem label='文章标题'>
+            <Form onSubmit={this.handleSubmit}>
+                <FormItem label='文章标题' {...formItemLayout}>
                     {getFieldDecorator('title', {
                         rules: [{
                             required: true,
@@ -62,10 +81,11 @@ class PostForm extends React.Component {
                     })(
                         <Input prefix={<Icon type="user"
                             className={styles['input__icon--color']} />}
+                            className={styles['input__width']}
                             placeholder="Username" />
                     )}
                 </FormItem>
-                <FormItem label="是否允许评论">
+                <FormItem label="是否允许评论" {...formItemLayout}>
                     {getFieldDecorator('allowComment', { 
                         valuePropName: 'checked' ,
                         initialValue: formData.allowComment
@@ -74,7 +94,7 @@ class PostForm extends React.Component {
                         checkedChildren="是" unCheckedChildren="否"/>
                     )}
                 </FormItem>
-                <FormItem label="是否置顶">
+                <FormItem label="是否置顶" {...formItemLayout}>
                     {getFieldDecorator('isTop', { 
                         valuePropName: 'checked' ,
                         initialValue: formData.isTop
@@ -83,7 +103,7 @@ class PostForm extends React.Component {
                         checkedChildren="是" unCheckedChildren="否"/>
                     )}
                 </FormItem>
-                <FormItem label="是否可用">
+                <FormItem label="是否可用" {...formItemLayout}>
                     {getFieldDecorator('isAvailable', { 
                         valuePropName: 'checked' ,
                         initialValue: formData.isAvailable
@@ -92,14 +112,17 @@ class PostForm extends React.Component {
                         checkedChildren="可用" unCheckedChildren="不可用"/>
                     )}
                 </FormItem>
-                <FormItem>
+                <FormItem {...formItemLayoutWithOutLabel}>
                     {getFieldDecorator('password', {
                         rules: [{ required: true, message: 'Password 不能为空！' }],
                     })(
-                        <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
+                        <Input 
+                        prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" 
+                        className={styles['input__width']} 
+                        placeholder="Password" />
                     )}
                 </FormItem>
-                <FormItem>
+                <FormItem {...formItemLayoutWithOutLabel}>
                     <Button type="primary" htmlType="submit">
                         Log in
                     </Button>
