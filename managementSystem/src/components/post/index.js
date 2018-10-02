@@ -4,6 +4,8 @@ import styles from './index.scss';
 import { withRouter } from 'dva/router';
 import { Form, Icon, Input, Button, Checkbox, Switch } from 'antd';
 
+import ImgForm from './imgForm';
+
 const FormItem = Form.Item;
 
 class PostForm extends React.Component {
@@ -27,13 +29,11 @@ class PostForm extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
         const { dispatch, user } = this.props
-        console.log(dispatch)
-        console.log(user)
+        console.log(user, 'model__user')
         this.props.form.validateFields((err, values) => {
             console.log(err, 'err')
-            if (err) return
+            // if (err) return
             console.log(values)
-            console.log(this.state)
 
             // dispatch({
             //     type: 'user/fetchToken',
@@ -47,8 +47,9 @@ class PostForm extends React.Component {
     }
 
     render() {
-        console.log(this.state)
-        const { getFieldDecorator } = this.props.form
+        // console.log(this.state)
+        const { form } = this.props
+        const { getFieldDecorator } = form
         const { formData } = this.state
 
         const formItemLayout = {
@@ -112,6 +113,8 @@ class PostForm extends React.Component {
                         checkedChildren="可用" unCheckedChildren="不可用"/>
                     )}
                 </FormItem>
+                {/* img数组 */}
+                <ImgForm {...this.props}></ImgForm>
                 <FormItem {...formItemLayoutWithOutLabel}>
                     {getFieldDecorator('password', {
                         rules: [{ required: true, message: 'Password 不能为空！' }],

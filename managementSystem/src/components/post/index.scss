@@ -5,3 +5,19 @@
 .input__width{
     width: 300px;
 }
+
+.dynamic__delete--button {
+    cursor: pointer;
+    position: relative;
+    top: 4px;
+    font-size: 24px;
+    color: #999;
+    transition: all .3s;
+}
+.dynamic__delete--button:hover {
+    color: #777;
+}
+.dynamic__delete--button[disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+}   
