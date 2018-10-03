@@ -12,7 +12,7 @@ class ImgForm extends React.Component {
     remove = (k) => {
         const { form } = this.props;
         // can use data-binding to get
-        const keys = form.getFieldValue('keys');
+        const keys = form.getFieldValue('imagesKeys');
         // We need at least one passenger
         if (keys.length === 1) {
             return;
@@ -20,20 +20,20 @@ class ImgForm extends React.Component {
 
         // can use data-binding to set
         form.setFieldsValue({
-            keys: keys.filter(key => key !== k),
+            imagesKeys: keys.filter(key => key !== k),
         });
     }
 
     add = () => {
         const { form } = this.props;
         // can use data-binding to get
-        const keys = form.getFieldValue('keys');
+        const keys = form.getFieldValue('imagesKeys');
         const nextKeys = keys.concat(uuid);
         uuid++;
         // can use data-binding to set
         // important! notify form to detect changes
         form.setFieldsValue({
-            keys: nextKeys,
+            imagesKeys: nextKeys,
         });
     }
 
@@ -55,14 +55,13 @@ class ImgForm extends React.Component {
                 sm: { span: 20, offset: 4 },
             },
         };
-        getFieldDecorator('keys', { initialValue: [] });
-        // console.log(getFieldDecorator('keys', { initialValue: [] }))
-        const keys = getFieldValue('keys');
+        getFieldDecorator('imagesKeys', { initialValue: [] });
+        const keys = getFieldValue('imagesKeys');
         const formItems = keys.map((k, index) => {
             return (
                 <FormItem
                     {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
-                    label={index === 0 ? 'Passengers' : ''}
+                    label={index === 0 ? '图片URL' : ''}
                     required={false}
                     key={k}
                 >
@@ -91,7 +90,9 @@ class ImgForm extends React.Component {
         return (
             <div>
                 {formItems}
-                <FormItem {...formItemLayoutWithOutLabel}>
+                <FormItem 
+                {...(formItems.length === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
+                label={formItems.length === 0 ? '图片URL' : ''}>
                     <Button type="dashed" onClick={this.add} style={{ width: '60%' }}>
                         <Icon type="plus" /> Add field
                     </Button>
