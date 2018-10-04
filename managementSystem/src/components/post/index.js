@@ -2,11 +2,12 @@ import React from 'react';
 import { connect } from 'dva';
 import styles from './index.scss';
 import { withRouter } from 'dva/router';
-import { Form, Icon, Input, Button, Checkbox, Switch } from 'antd';
+import { Form, Icon, Input, Button, Checkbox, Switch, Select } from 'antd';
 
 import ImgForm from './imgForm';
 
 const FormItem = Form.Item;
+const Option = Select.Option;
 
 class PostForm extends React.Component {
     state = {
@@ -16,6 +17,7 @@ class PostForm extends React.Component {
             images: [],
             tags: [],
             category: '',
+            categoryList: ['js', 'css', 'html'],
             allowComment: true,
             hits: 0,
             isTop: false,
@@ -54,24 +56,30 @@ class PostForm extends React.Component {
 
         const formItemLayout = {
             labelCol: {
-              xs: { span: 24 },
-              sm: { span: 4 },
+                xs: { span: 24 },
+                sm: { span: 4 },
             },
             wrapperCol: {
-              xs: { span: 24 },
-              sm: { span: 20 },
+                xs: { span: 24 },
+                sm: { span: 20 },
             },
-          };
+        };
 
-          const formItemLayoutWithOutLabel = {
+        const formItemLayoutWithOutLabel = {
             wrapperCol: {
-              xs: { span: 24, offset: 0 },
-              sm: { span: 20, offset: 4 },
+                xs: { span: 24, offset: 0 },
+                sm: { span: 20, offset: 4 },
             },
-          };
+        };
 
         return (
             <Form onSubmit={this.handleSubmit}>
+                <FormItem label='创建者' {...formItemLayout}>
+                    formData.createdByID
+                </FormItem>
+                <FormItem label='点击浏览次数' {...formItemLayout}>
+                    formData.hits
+                </FormItem>
                 <FormItem label='文章标题' {...formItemLayout}>
                     {getFieldDecorator('title', {
                         rules: [{
@@ -87,42 +95,57 @@ class PostForm extends React.Component {
                     )}
                 </FormItem>
                 <FormItem label="是否允许评论" {...formItemLayout}>
-                    {getFieldDecorator('allowComment', { 
-                        valuePropName: 'checked' ,
+                    {getFieldDecorator('allowComment', {
+                        valuePropName: 'checked',
                         initialValue: formData.allowComment
                     })(
                         <Switch
-                        checkedChildren="是" unCheckedChildren="否"/>
+                            checkedChildren="是" unCheckedChildren="否" />
                     )}
                 </FormItem>
                 <FormItem label="是否置顶" {...formItemLayout}>
-                    {getFieldDecorator('isTop', { 
-                        valuePropName: 'checked' ,
+                    {getFieldDecorator('isTop', {
+                        valuePropName: 'checked',
                         initialValue: formData.isTop
                     })(
                         <Switch
-                        checkedChildren="是" unCheckedChildren="否"/>
+                            checkedChildren="是" unCheckedChildren="否" />
                     )}
                 </FormItem>
                 <FormItem label="是否可用" {...formItemLayout}>
-                    {getFieldDecorator('isAvailable', { 
-                        valuePropName: 'checked' ,
+                    {getFieldDecorator('isAvailable', {
+                        valuePropName: 'checked',
                         initialValue: formData.isAvailable
                     })(
                         <Switch
-                        checkedChildren="可用" unCheckedChildren="不可用"/>
+                            checkedChildren="可用" unCheckedChildren="不可用" />
                     )}
                 </FormItem>
+
                 {/* img数组 */}
                 <ImgForm {...this.props}></ImgForm>
-                <FormItem {...formItemLayoutWithOutLabel}>
-                    {getFieldDecorator('password', {
-                        rules: [{ required: true, message: 'Password 不能为空！' }],
+
+                <FormItem
+                    {...formItemLayout}
+                    label="Select"
+                    hasFeedback
+                >
+                    {getFieldDecorator('category', {
+                        rules: [
+                            {
+                                required: true,
+                                message: 'Please select your category!'
+                            }
+                        ],
                     })(
-                        <Input 
-                        prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" 
-                        className={styles['input__width']} 
-                        placeholder="Password" />
+                        <Select placeholder="Please select a category"
+                            className={styles['input__width']}>
+                            {
+                                formData.categoryList.map(v => {
+                                    return <Option value={v} key={v}>{v}</Option>
+                                })
+                            }
+                        </Select>
                     )}
                 </FormItem>
                 <FormItem {...formItemLayoutWithOutLabel}>
