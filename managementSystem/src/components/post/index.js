@@ -15,7 +15,7 @@ class PostForm extends React.Component {
             title: '',
             markdown: '',
             images: [],
-            tags: [],
+            tags: ['帅','萌','美'],
             category: '',
             categoryList: ['js', 'css', 'html'],
             allowComment: true,
@@ -28,6 +28,7 @@ class PostForm extends React.Component {
     componentDidMount() {
         // setTimeout(_ => this.setState({ data: data }), 300)
     }
+
     handleSubmit = (e) => {
         e.preventDefault();
         const { dispatch, user } = this.props
@@ -46,6 +47,10 @@ class PostForm extends React.Component {
             //     this.props.history.push('/')
             // });
         });
+    }
+
+    tagsHandleChange = (value) => {
+        console.log(`selected ${value}`);
     }
 
     render() {
@@ -127,7 +132,7 @@ class PostForm extends React.Component {
 
                 <FormItem
                     {...formItemLayout}
-                    label="Select"
+                    label="分组名称"
                     hasFeedback
                 >
                     {getFieldDecorator('category', {
@@ -142,6 +147,33 @@ class PostForm extends React.Component {
                             className={styles['input__width']}>
                             {
                                 formData.categoryList.map(v => {
+                                    return <Option value={v} key={v}>{v}</Option>
+                                })
+                            }
+                        </Select>
+                    )}
+                </FormItem>
+                <FormItem
+                    {...formItemLayout}
+                    label="标签名称"
+                    hasFeedback
+                >
+                    {getFieldDecorator('tags', {
+                        rules: [
+                            {
+                                required: true,
+                                message: 'Please select your category!'
+                            }
+                        ],
+                    })(
+                        <Select
+                            mode="tags"
+                            placeholder="Please select a category"
+                            className={styles['input__width']}
+                            onChange={this.tagsHandleChange}
+                        >
+                            {
+                                formData.tags.map(v => {
                                     return <Option value={v} key={v}>{v}</Option>
                                 })
                             }
