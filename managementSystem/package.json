@@ -12,7 +12,8 @@
     "dva": "^2.1.0",
     "node-sass": "^4.9.2",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-markdown": "^4.0.2"
   },
   "devDependencies": {
     "babel-plugin-dva-hmr": "^0.3.2",
