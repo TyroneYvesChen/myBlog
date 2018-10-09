@@ -4,15 +4,6 @@ import styles from './index.scss';
 
 import Editor from './editor';
 
-const ReactMarkdown = require('react-markdown')
-const htmlParser = require('react-markdown/plugins/html-parser')
-
-
-const parseHtml = htmlParser({
-    isValidNode: node => node.type !== 'script',
-    processingInstructions: [/* ... */]
-})
-
 
 class MarkdownEditor extends React.Component {
     constructor(props) {
@@ -38,8 +29,7 @@ class MarkdownEditor extends React.Component {
 
         return (
             <div>
-                <Editor onChange={this.editorOnChange} value={this.state.markdownSrc}></Editor>
-                <ReactMarkdown source={this.state.markdownSrc} className={styles['react__markdown']}/>
+                <Editor></Editor>
             </div>
         )
     }

@@ -11,10 +11,11 @@
     "babel-plugin-import": "^1.8.0",
     "codemirror": "^5.40.2",
     "dva": "^2.1.0",
+    "highlight.js": "^9.12.0",
+    "marked": "^0.5.1",
     "node-sass": "^4.9.2",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-markdown": "^4.0.2"
+    "react-dom": "^16.2.0"
   },
   "devDependencies": {
     "babel-plugin-dva-hmr": "^0.3.2",

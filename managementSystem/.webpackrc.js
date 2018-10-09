@@ -18,5 +18,6 @@ export default {
         "components": "./src/components",
       }
     }]
-  ]
+  ],
+  // "disableCSSModules":true // 关闭CSSModules
 }
