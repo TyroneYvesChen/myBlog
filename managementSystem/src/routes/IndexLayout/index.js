@@ -139,7 +139,7 @@ class IndexLayout extends React.Component {
               />
             </Header>
             {/* 右侧子路由 */}
-            <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 }}>
+            <Content style={{ margin: '24px 16px', padding: 24, background: '#fff' }}>
               <Switch>
                 {/* <Route path='/login' component={login} />
               <Route path='/home/wocao' component={wocao} />

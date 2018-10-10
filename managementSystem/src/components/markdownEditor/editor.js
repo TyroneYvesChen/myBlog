@@ -3,7 +3,7 @@ import marked from 'marked'
 import highlight from 'highlight.js'
 import styles from './index.scss';
 
-import CodemirrorEditor, {CodemirrorHandler} from './codemirror'
+import CodemirrorEditor, { CodemirrorHandler } from './codemirror'
 
 require('codemirror/lib/codemirror.css')
 require('codemirror/theme/solarized.css')
@@ -41,7 +41,7 @@ highlight.configure({
   languages: ['CSS', 'HTML, XML', 'JavaScript', 'PHP', 'Python', 'Stylus', 'TypeScript', 'Markdown']
 })
 marked.setOptions({
-  highlight (code) {
+  highlight(code) {
     return highlight.highlightAuto(code).value
   }
 })
@@ -61,7 +61,7 @@ export default class EditorC extends React.Component {
       theme: 'solarized',
       tabSize: 2,
       lineWrapping: true,
-			readOnly: false,
+      readOnly: false,
       mode: 'markdown',
       // 是否自动闭合标签，基于 codemirror/addon/edit/closetag
       autoCloseTags: true,
@@ -69,14 +69,14 @@ export default class EditorC extends React.Component {
       extraKeys: this.setExtraKeys()
     }
   }
-	render () {
+  render() {
     let state = this.state
     return [
       <header className="edit-header" key='header'>
-        <input type="text" className="title-input" placeholder="输入文章标题..." spellCheck="false"/>
+        <input type="text" className="title-input" placeholder="输入文章标题..." spellCheck="false" />
       </header>,
-      <div className={styles["editor-main-c"]} ref={node=>this.aceBox = node} style={{height: state.editorBoxH + 'px'}} key='main'>
-        <div className={`${styles["common-container"]} ${styles["editor-container"]}`} onMouseOver={this.setCurrentIndex.bind(this, 1)} ref={node=>this.editContainer=node}>
+      <div className={styles["editor-main-c"]} ref={node => this.aceBox = node} style={{ height: state.editorBoxH + 'px' }} key='main'>
+        <div className={`${styles["common-container"]} ${styles["editor-container"]}`} onMouseOver={this.setCurrentIndex.bind(this, 1)} ref={node => this.editContainer = node}>
           {
             state.editorBoxH &&
             <CodemirrorEditor
@@ -84,11 +84,19 @@ export default class EditorC extends React.Component {
               onScroll={this.containerScroll.bind(this, 1)}
               onChange={this.updateCode.bind(this)}
               options={this.CodemirrorOptions}
-              autoFocus={true}/>
+              autoFocus={true} />
           }
         </div>
-        <div className={`${styles["common-container"]} ${styles["preview-container"]}`} ref={node=>this.previewContainer=node} onMouseOver={this.setCurrentIndex.bind(this, 2)} onScroll={this.containerScroll.bind(this, 2)}>
-          <div className={`markdown-body ${styles["preview-wrapper"]}`} dangerouslySetInnerHTML={{__html: state.previewContent}} ref={node=>this.previewWrap=node}></div>
+        <div
+          className={`${styles["common-container"]} ${styles["preview-container"]}`}
+          ref={node => this.previewContainer = node}
+          onMouseOver={this.setCurrentIndex.bind(this, 2)}
+          onScroll={this.containerScroll.bind(this, 2)}>
+          <div
+            className={`markdown-body ${styles["preview-wrapper"]}`}
+            dangerouslySetInnerHTML={{ __html: state.previewContent }}
+            ref={node => this.previewWrap = node}>
+          </div>
         </div>
       </div>
     ]
@@ -111,7 +119,7 @@ export default class EditorC extends React.Component {
     state.hasContentChanged && this.setScrollValue()
     if (state.currentTabIndex === 1 && index === 1) {
       this.previewContainer.scrollTop = e.top * state.scale
-    } else if(state.currentTabIndex === 2 && index === 2) {
+    } else if (state.currentTabIndex === 2 && index === 2) {
       CodemirrorHandler.scrollTo(null, this.previewContainer.scrollTop / state.scale)
     }
   }
@@ -125,20 +133,20 @@ export default class EditorC extends React.Component {
       hasContentChanged: false
     })
   }
-  
+
   updateCode(newCode) {
     console.log(newCode)
     this.setState({
       previewContent: marked(newCode)
       // previewContent: newCode
     })
-    !this.state.hasContentChanged && (this.setState({hasContentChanged: true}))
+    !this.state.hasContentChanged && (this.setState({ hasContentChanged: true }))
   }
-  
+
   setExtraKeys() {
     // 自定义快捷键
     const that = this
-    let appendTxtFn = ()=> {
+    let appendTxtFn = () => {
       let resultObj = {}
       let key2Command = [
         { name: 'Ctrl-H', value: '## ', offset: 0 },
@@ -149,8 +157,8 @@ export default class EditorC extends React.Component {
         { name: 'Alt-I', value: '![alt]()', offset: 1 },
         { name: 'Alt-L', value: '* ', offset: 0 }
       ]
-      key2Command.forEach((item, index)=>{
-        resultObj[item.name] = (cm)=> {
+      key2Command.forEach((item, index) => {
+        resultObj[item.name] = (cm) => {
           that.setCursor(cm, item.value, item.offset, item.offsetLine)
         }
       })
