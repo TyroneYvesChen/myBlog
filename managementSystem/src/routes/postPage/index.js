@@ -1,22 +1,18 @@
 import React from 'react';
 import { connect } from 'dva';
-import styles from './index.scss';
+// import styles from './index.scss';
 // import { withRouter } from 'dva/router';
 import Post from 'components/post';
-
+import MarkdownEditor from 'components/markdownEditor';
 
 class postPage extends React.Component {
     
-
     render() {
-        return <Post></Post>
+        return [<Post key="Post"></Post>,<MarkdownEditor key="MarkdownEditor"></MarkdownEditor>]
     }
 }
 
 postPage.propTypes = {
 };
 
-
-const mapStateToProps = ({ user }) =>({ user })
-
-export default connect(mapStateToProps)(postPage)
+export default connect()(postPage)
