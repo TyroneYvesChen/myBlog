@@ -26,18 +26,20 @@ class PostForm extends React.Component {
         }
     };
     componentDidMount() {
+        this.props.onRef(this)
         // setTimeout(_ => this.setState({ data: data }), 300)
     }
 
     handleSubmit = (e) => {
-        e.preventDefault();
+        e && e.preventDefault();
         const { dispatch, user } = this.props
         console.log(user, 'model__user')
+        let formData
         this.props.form.validateFields((err, values) => {
             console.log(err, 'err')
             // if (err) return
             console.log(values)
-
+            formData = values
             // dispatch({
             //     type: 'user/fetchToken',
             //     payload: values,
@@ -47,6 +49,7 @@ class PostForm extends React.Component {
             //     this.props.history.push('/')
             // });
         });
+        return formData
     }
 
     tagsHandleChange = (value) => {

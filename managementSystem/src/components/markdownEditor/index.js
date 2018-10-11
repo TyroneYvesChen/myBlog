@@ -68,40 +68,9 @@ export default class EditorC extends React.Component {
       extraKeys: this.setExtraKeys()
     }
   }
-  render() {
-    let state = this.state
-    return [
-      <header className="edit-header" key='header'>
-        <input type="text" className="title-input" placeholder="输入文章标题..." spellCheck="false" />
-      </header>,
-      <div className={styles["editor-main-c"]} ref={node => this.aceBox = node} style={{ height: state.editorBoxH + 'px' }} key='main'>
-        <div className={`${styles["common-container"]} ${styles["editor-container"]}`} onMouseOver={this.setCurrentIndex.bind(this, 1)} ref={node => this.editContainer = node}>
-          {
-            state.editorBoxH &&
-            <CodemirrorEditor
-              ref="editor"
-              onScroll={this.containerScroll.bind(this, 1)}
-              onChange={this.updateCode.bind(this)}
-              options={this.CodemirrorOptions}
-              autoFocus={true} />
-          }
-        </div>
-        <div
-          className={`${styles["common-container"]} ${styles["preview-container"]}`}
-          ref={node => this.previewContainer = node}
-          onMouseOver={this.setCurrentIndex.bind(this, 2)}
-          onScroll={this.containerScroll.bind(this, 2)}>
-          <div
-            className={`markdown-body ${styles["preview-wrapper"]}`}
-            dangerouslySetInnerHTML={{ __html: state.previewContent }}
-            ref={node => this.previewWrap = node}>
-          </div>
-        </div>
-      </div>
-    ]
-  }
 
   componentDidMount() {
+    this.props.onRef(this)
     this.setState({
       editorBoxH: document.documentElement.clientHeight - document.querySelector('.edit-header').offsetHeight
     })
@@ -134,7 +103,7 @@ export default class EditorC extends React.Component {
   }
 
   updateCode(newCode) {
-    console.log(newCode)
+    // console.log(newCode)
     this.setState({
       previewContent: marked(newCode)
       // previewContent: newCode
@@ -182,5 +151,38 @@ export default class EditorC extends React.Component {
     let lastLine = cm.lastLine() - offsetLine
     cm.setCursor(lastLine, cm.getLine(lastLine).length - offset)
     this.updateCode(newValue)
+  }
+
+  render() {
+    let state = this.state
+    return [
+      <header className="edit-header" key='header'>
+        <input type="text" className="title-input" placeholder="输入文章标题..." spellCheck="false" />
+      </header>,
+      <div className={styles["editor-main-c"]} ref={node => this.aceBox = node} style={{ height: state.editorBoxH + 'px' }} key='main'>
+        <div className={`${styles["common-container"]} ${styles["editor-container"]}`} onMouseOver={this.setCurrentIndex.bind(this, 1)} ref={node => this.editContainer = node}>
+          {
+            state.editorBoxH &&
+            <CodemirrorEditor
+              ref="editor"
+              onScroll={this.containerScroll.bind(this, 1)}
+              onChange={this.updateCode.bind(this)}
+              options={this.CodemirrorOptions}
+              autoFocus={true} />
+          }
+        </div>
+        <div
+          className={`${styles["common-container"]} ${styles["preview-container"]}`}
+          ref={node => this.previewContainer = node}
+          onMouseOver={this.setCurrentIndex.bind(this, 2)}
+          onScroll={this.containerScroll.bind(this, 2)}>
+          <div
+            className={`markdown-body ${styles["preview-wrapper"]}`}
+            dangerouslySetInnerHTML={{ __html: state.previewContent }}
+            ref={node => this.previewWrap = node}>
+          </div>
+        </div>
+      </div>
+    ]
   }
 }
