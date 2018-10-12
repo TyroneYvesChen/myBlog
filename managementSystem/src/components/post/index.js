@@ -183,11 +183,11 @@ class PostForm extends React.Component {
                         </Select>
                     )}
                 </FormItem>
-                <FormItem {...formItemLayoutWithOutLabel}>
+                {/* <FormItem {...formItemLayoutWithOutLabel}>
                     <Button type="primary" htmlType="submit">
                         Log in
                     </Button>
-                </FormItem>
+                </FormItem> */}
             </Form>
         );
     }

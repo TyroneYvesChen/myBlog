@@ -72,7 +72,8 @@ export default class EditorC extends React.Component {
   componentDidMount() {
     this.props.onRef(this)
     this.setState({
-      editorBoxH: document.documentElement.clientHeight - document.querySelector('.edit-header').offsetHeight
+      // editorBoxH: document.documentElement.clientHeight - document.querySelector('.edit-header').offsetHeight
+      editorBoxH: document.documentElement.clientHeight
     })
   }
 
@@ -156,9 +157,9 @@ export default class EditorC extends React.Component {
   render() {
     let state = this.state
     return [
-      <header className="edit-header" key='header'>
-        <input type="text" className="title-input" placeholder="输入文章标题..." spellCheck="false" />
-      </header>,
+      // <header className="edit-header" key='header'>
+      //   <input type="text" className="title-input" placeholder="输入文章标题..." spellCheck="false" />
+      // </header>,
       <div className={styles["editor-main-c"]} ref={node => this.aceBox = node} style={{ height: state.editorBoxH + 'px' }} key='main'>
         <div className={`${styles["common-container"]} ${styles["editor-container"]}`} onMouseOver={this.setCurrentIndex.bind(this, 1)} ref={node => this.editContainer = node}>
           {

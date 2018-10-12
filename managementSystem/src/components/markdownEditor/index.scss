@@ -6,6 +6,7 @@
 
 // 编辑框主体样式
 .editor-main-c {
+    padding-top: 50px;
     display: flex;
     overflow: hidden;
     .common-container {
@@ -17,7 +18,7 @@
     .preview-container {
       overflow-y: scroll;
       border: 1px solid #ddd;
-      border-top: none;
+      // border-top: none;
       .preview-wrapper {
         padding: 20px;
         *:last-child {
