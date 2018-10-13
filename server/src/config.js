@@ -5,8 +5,8 @@ export const NODE_ENV = 'development'
 export const PORT = 8888
 
 // MONGO 数据库
-export const MONGO_URL = 'mongodb://127.0.0.1:27017/'
-export const MONGO_DB = 'yitianyibu'
+export const MONGO_URL = 'mongodb://127.0.0.1:9999/'
+export const MONGO_DB = 'wocao'
 
 // admin
 export const ADMIN_USERNAME = '******'

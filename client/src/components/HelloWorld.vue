@@ -33,7 +33,7 @@ export default {
     let options = {
       account: 'wocao',
       username: "ty",
-      // password: "menmenda"
+      password: "menmenda"
     };
     API.login(options).then( v => {
       console.log(v, '返回值')
