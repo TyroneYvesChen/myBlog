@@ -15,10 +15,10 @@ const PostSchema = new Schema(
     isAvailable: { type: Boolean, default: true },     //是否可用
     createdByID: { type: Schema.Types.ObjectId, required: true }    //被哪个账号创建的
   },
-  {
-    collection: 'post',
-    timestamps: { createdAt: 'createdAt', updatedAt: 'updatedAt' }
-  }
+  // {
+  //   collection: 'post',
+  //   timestamps: { createdAt: 'createdAt', updatedAt: 'updatedAt' }
+  // }
 )
 
-export default mongoose.model('post', PostSchema)
+export default mongoose.model('Post', PostSchema)

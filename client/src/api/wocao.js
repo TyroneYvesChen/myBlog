@@ -15,3 +15,10 @@ export function login(data) {
         data: data
     })
 }
+
+export function createPost() {
+    return request({
+        url: '/api/post/createPost',
+        method: 'post'
+    })
+}

@@ -15,7 +15,7 @@ const register = async (req, res, next) => {
     }
 
     try {
-        userManager.addUser(options, res)
+        userManager.createUser(options, res)
     }
     catch (e) {
         next(handlerCustomError('注册失败'), 100001)

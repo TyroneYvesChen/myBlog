@@ -35,7 +35,12 @@ export default {
       username: "ty",
       password: "menmenda"
     };
-    API.login(options).then( v => {
+    // API.login(options).then( v => {
+    //   console.log(v, '返回值')
+    // }, e => {
+    //   console.log(e)
+    // });
+    API.createPost().then( v => {
       console.log(v, '返回值')
     }, e => {
       console.log(e)
