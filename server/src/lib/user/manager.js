@@ -15,7 +15,7 @@ const findOneByAccount = async (account) => {
 
 
 const createUser = async (options, res) => {
-    let result = await findOneByAccount(options.account)
+    const result = await findOneByAccount(options.account)
     // next(handlerCustomError(10101, 'wocao'))
     if (!result) {
         const insertResult = await insert(options)

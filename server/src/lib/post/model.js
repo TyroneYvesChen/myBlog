@@ -13,12 +13,12 @@ const PostSchema = new Schema(
     hits: { type: Number, default: 0 },             //文章被点击的次数
     isTop: { type: Boolean, default: false },
     isAvailable: { type: Boolean, default: true },     //是否可用
-    createdByID: { type: Schema.Types.ObjectId, required: true }    //被哪个账号创建的
+    // createdByID: { type: Schema.Types.ObjectId, required: true }    //被哪个账号创建的
   },
-  // {
-  //   collection: 'post',
-  //   timestamps: { createdAt: 'createdAt', updatedAt: 'updatedAt' }
-  // }
+  {
+    collection: 'post',
+    timestamps: { createdAt: 'createdAt', updatedAt: 'updatedAt' }
+  }
 )
 
 export default mongoose.model('Post', PostSchema)

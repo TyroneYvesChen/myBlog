@@ -4,8 +4,8 @@ import { formatResult, errorResult } from '../../middleware/formatter'
 
 const register = async (req, res, next) => {
     console.log('register')
-    let options = req.body,
-        { username, password } = options
+    const options = req.body
+    const { username, password } = options
 
     if (!username) {
         return res.json(errorResult('用户名为空', 101))
@@ -24,8 +24,8 @@ const register = async (req, res, next) => {
 
 const login = async (req, res, next) => {
     console.log('login')
-    let options = req.body,
-        { account, password } = options
+    const options = req.body
+    const { account, password } = options
 
     if (!account) {
         return res.json(errorResult('账号为空', 104))

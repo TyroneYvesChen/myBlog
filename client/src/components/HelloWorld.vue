@@ -40,7 +40,7 @@ export default {
     // }, e => {
     //   console.log(e)
     // });
-    API.createPost().then( v => {
+    API.findPostById(2).then( v => {
       console.log(v, '返回值')
     }, e => {
       console.log(e)

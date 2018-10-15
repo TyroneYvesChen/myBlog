@@ -4,7 +4,9 @@ import postRouter from './lib/post/router'
 
 const router = (app) => {
     app.use(wocaoRouter)
+    
     app.use('/api/user', userRouter)
+
     app.use('/api/post', postRouter)
 }
 

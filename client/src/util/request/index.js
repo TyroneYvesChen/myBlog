@@ -12,7 +12,7 @@ let qs = require('qs')
 const baseURL = "http://localhost:8888"
 
 let CancelToken = axios.CancelToken,
-    source = CancelToken.source()
+  source = CancelToken.source()
 
 
 let httpServer = axios.create({
@@ -38,9 +38,9 @@ httpServer.interceptors.request.use(function (config) {
   // 在发送请求之前做些什么
   //需要在头部加一对键值{router:xxx}与对应router键值相同
 
-  let params = config.data || config.params,  //传参
-    router = params.router,                   //需要在响应头header加router字段及相应内容
-    method = config.method                   //请求方式：post || get
+  let params = config.data || config.params  //传参
+  let router = params && params.router                   //需要在响应头header加router字段及相应内容
+  let method = config.method                   //请求方式：post || get
 
   let methodObj = {
     "post": () => {
@@ -66,13 +66,13 @@ httpServer.interceptors.request.use(function (config) {
 
 
   //记录请求数 ++
-  store.dispatch("httpCounts",true)
+  store.dispatch("httpCounts", true)
 
   return config;
 }, function (error) {
 
   //记录请求数 --
-  store.dispatch("httpCounts",false)
+  store.dispatch("httpCounts", false)
   return Promise.reject(error);
 });
 
@@ -91,7 +91,7 @@ httpServer.interceptors.response.use(function (response) {
   response.data = data
 
   //记录请求数 --
-  store.dispatch("httpCounts",false)
+  store.dispatch("httpCounts", false)
 
   return data;
 }, function (error) {
@@ -148,7 +148,7 @@ httpServer.interceptors.response.use(function (response) {
   }
 
   //记录请求数 --
-  store.dispatch("httpCounts",false)
+  store.dispatch("httpCounts", false)
   return Promise.reject(error);
 });
 

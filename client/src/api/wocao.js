@@ -22,3 +22,13 @@ export function createPost() {
         method: 'post'
     })
 }
+
+export function findPostById(postId) {
+    return request({
+        url: '/api/post/findPostById',
+        method: 'post',
+        data: {
+            postId
+        }
+    })
+}
