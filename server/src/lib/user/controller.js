@@ -18,7 +18,7 @@ const register = async (req, res, next) => {
         userManager.createUser(options, res)
     }
     catch (e) {
-        next(handlerCustomError('注册失败'), 100001)
+        next(handlerCustomError(`注册失败${e.message}`), 100001)
     }
 }
 
@@ -44,7 +44,7 @@ const login = async (req, res, next) => {
         }
     }
     catch (e) {
-        next(handlerCustomError('登陆失败', 100002))
+        next(handlerCustomError(`登陆失败${e.message}`, 100002))
     }
 }
 

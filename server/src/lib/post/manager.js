@@ -8,7 +8,8 @@ const insert = async (options = {}) => {
 }
 
 const findOneById = async (id) => {
-    const result = await Model.findOne({ _id: id })
+    // const result = await Model.findOne({ _id: id })
+    const result = await Model.findById(id)
     console.log(result, '根据id查找对应文章')
     return result
 }

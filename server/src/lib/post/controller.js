@@ -1,6 +1,7 @@
 import postManager from './manager'
 import { handlerCustomError } from '../../middleware/error'
 import { formatResult, errorResult } from '../../middleware/formatter'
+import mongoose from 'mongoose'
 
 const createPost = async (req, res, next) => {
     console.log('createPost')
@@ -10,7 +11,7 @@ const createPost = async (req, res, next) => {
         res.json(formatResult('文章添加成功'))
     }
     catch (e) {
-        next(handlerCustomError('文章添加失败'), 200001)
+        next(handlerCustomError(`文章添加失败${e.message}`), 200001)
     }
 }
 
@@ -19,9 +20,13 @@ const findPostById = async (req, res, next) => {
     const options = req.body
     const { postId } = options
 
-    if(!postId){
+    if (!postId) {
         return res.json(errorResult('postId不能为空', 201))
     }
+    else if (typeof postId !== 'string' || postId.length !== 24){
+        return res.json(errorResult('postId格式不正确', 203))
+    }
+    
 
     try {
         const result = await postManager.findOneById(postId)
@@ -29,11 +34,11 @@ const findPostById = async (req, res, next) => {
             return res.json(errorResult('文章不存在', 202))
         }
         else {
-            return res.json(formatResult('文章查询成功'))
+            return res.json(formatResult(result))
         }
     }
     catch (e) {
-        next(handlerCustomError('文章查询失败', 200002))
+        next(handlerCustomError(`文章查询失败：${e.message}`, 200002))
     }
 }
 
