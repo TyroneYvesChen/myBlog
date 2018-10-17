@@ -26,6 +26,7 @@ const formatResult = (result, code = 100) => {
  * post
  * 201 postId为空
  * 202 文章不存在
+ * 203 postId格式不正确
  */
 const errorResult = (result, code = 0) => {
     return {

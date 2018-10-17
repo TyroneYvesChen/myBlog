@@ -40,7 +40,11 @@ export default {
     // }, e => {
     //   console.log(e)
     // });
-    API.findPostById('1').then( v => {
+    const data = {
+      _id: "5bc36cb29c81d082fce831f1",
+      markdown: 'wocao'
+    }
+    API.updatePost(data).then( v => {
       console.log(v, '返回值')
     }, e => {
       console.log(e)

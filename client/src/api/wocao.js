@@ -32,3 +32,11 @@ export function findPostById(postId) {
         }
     })
 }
+
+export function updatePost(data) {
+    return request({
+        url: '/api/post/updatePost',
+        method: 'post',
+        data
+    })
+}

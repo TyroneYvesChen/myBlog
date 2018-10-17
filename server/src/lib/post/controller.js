@@ -1,7 +1,7 @@
 import postManager from './manager'
 import { handlerCustomError } from '../../middleware/error'
 import { formatResult, errorResult } from '../../middleware/formatter'
-import mongoose from 'mongoose'
+import { isObjectId } from '../../middleware/util'
 
 const createPost = async (req, res, next) => {
     console.log('createPost')
@@ -23,7 +23,7 @@ const findPostById = async (req, res, next) => {
     if (!postId) {
         return res.json(errorResult('postId不能为空', 201))
     }
-    else if (typeof postId !== 'string' || postId.length !== 24){
+    else if (!isObjectId(postId)){
         return res.json(errorResult('postId格式不正确', 203))
     }
     
@@ -42,8 +42,17 @@ const findPostById = async (req, res, next) => {
     }
 }
 
+const updatePost = async (req, res, next) => {
+    console.log('updatePost')
+    const options = req.body
+    const { postId } = options
+    console.log(options)
+    const result = await postManager.updateOne(options)
+}
+
 
 export default {
     createPost,
-    findPostById
+    findPostById,
+    updatePost
 }

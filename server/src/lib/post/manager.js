@@ -14,7 +14,19 @@ const findOneById = async (id) => {
     return result
 }
 
+const updateOne = async (data) => {
+    // const result = await Model.findOne({ _id: id })
+    const conditions = { _id: data._id }
+    const update = data
+    const options = { upsert: true }
+    const result = await Model.update(conditions, update, options)
+
+    console.log(result, '根据id更新文章')
+    return result
+}
+
 export default {
     insert,
-    findOneById
+    findOneById,
+    updateOne
 }
