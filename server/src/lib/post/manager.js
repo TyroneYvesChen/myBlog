@@ -16,10 +16,11 @@ const findOneById = async (id) => {
 
 const updateOne = async (data) => {
     // const result = await Model.findOne({ _id: id })
-    const conditions = { _id: data._id }
-    const update = data
-    const options = { upsert: true }
-    const result = await Model.update(conditions, update, options)
+    const conditions = { _id: data._id } // 查询条件
+    const options = { 
+        // upsert: true // 如果没有则会插入一条新的
+     } 
+    const result = await Model.update(conditions, data, options)
 
     console.log(result, '根据id更新文章')
     return result

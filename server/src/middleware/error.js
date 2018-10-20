@@ -10,6 +10,7 @@
  * post
  * 200001 文章添加失败
  * 200002 文章查询失败
+ * 200003 文章修改失败
  */
 const handlerCustomError = (message, code = 100000) => {
     const error = new Error(message)

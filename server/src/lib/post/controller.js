@@ -18,18 +18,18 @@ const createPost = async (req, res, next) => {
 const findPostById = async (req, res, next) => {
     console.log('findPostById')
     const options = req.body
-    const { postId } = options
+    const { _id } = options
 
-    if (!postId) {
-        return res.json(errorResult('postId不能为空', 201))
+    if (!_id) {
+        return res.json(errorResult('_id不能为空', 201))
     }
-    else if (!isObjectId(postId)){
-        return res.json(errorResult('postId格式不正确', 203))
+    else if (!isObjectId(_id)){
+        return res.json(errorResult('_id格式不正确', 203))
     }
     
 
     try {
-        const result = await postManager.findOneById(postId)
+        const result = await postManager.findOneById(_id)
         if (!result) {
             return res.json(errorResult('文章不存在', 202))
         }
@@ -45,9 +45,35 @@ const findPostById = async (req, res, next) => {
 const updatePost = async (req, res, next) => {
     console.log('updatePost')
     const options = req.body
-    const { postId } = options
-    console.log(options)
-    const result = await postManager.updateOne(options)
+    const { _id } = options
+
+    if (!_id) {
+        return res.json(errorResult('_id不能为空', 201))
+    }
+    else if (!isObjectId(_id)){
+        return res.json(errorResult('_id格式不正确', 203))
+    }
+
+    try {
+        const result = await postManager.updateOne(options)
+        const {n, nModified, ok} = result
+        if (n === 0){
+            return res.json(errorResult('_id未查询到对应的文章', 204))
+        }
+        else if (nModified === 0){
+            return res.json(errorResult('查询到文章但是未修改成功，不应该出现这情况请及时修复', 205))
+        }
+        else if (n === 1 && nModified === 1 && ok === 1) {
+            return res.json(formatResult('文章修改成功'))
+        }
+        else {
+            return res.json(errorResult('未知错误', 206))
+        }
+    }
+    catch (e) {
+        next(handlerCustomError(`文章修改失败：${e.message}`, 200003))
+    }
+    
 }
 
 
