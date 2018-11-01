@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "supervisor ./src/index.js",
+    "build": "babel src -d build --source-maps",
     "wocao": "supervisor -w app.js node_modules/.bin/babel-node"
   },
   "author": "TyroneYvesChen",
