@@ -30,6 +30,11 @@ module.exports = {
       '@static': resolve('static')
     }
   },
+  // 使用外部源，不打包如：cdn
+  // externals: {
+  //   vue: 'Vue',
+  //   'element': 'element-ui'
+  // },
   module: {
     rules: [
       {
