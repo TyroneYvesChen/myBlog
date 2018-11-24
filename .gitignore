@@ -3,6 +3,7 @@
 node_modules/
 
 server/node_modules/
+server/build/
 
 client/.DS_Store
 client/node_modules/
